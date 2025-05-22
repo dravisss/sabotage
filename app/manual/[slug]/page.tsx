@@ -1,0 +1,116 @@
+import { getSectionData, ManualSection, tacticsMap, TacticCardData, sectionEmojis } from '@/lib/manual-content';
+import SectionContentWrapper from '@/components/SectionContentWrapper';
+import { TacticCard } from '@/components/TacticCard';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { notFound } from 'next/navigation';
+
+interface ManualPageProps {
+  params: {
+    slug: string;
+  };
+}
+
+export async function generateStaticParams() {
+  // For Next.js to statically generate pages during build
+  const { manualSections } = await import('@/lib/manual-content');
+  return manualSections.map((section: ManualSection) => ({
+    slug: section.slug,
+  }));
+}
+
+export default function ManualPage({ params }: ManualPageProps) {
+  const section: ManualSection | undefined = getSectionData(params.slug);
+
+  if (!section) {
+    notFound(); // Triggers 404 page if slug is invalid
+  }
+
+  const { Icon: DisclaimerIcon } = section.disclaimer || {};
+  const { Icon: FinalDisclaimerIcon } = section.finalDisclaimer || {};
+  return (
+    <SectionContentWrapper>
+      <article className="space-y-8">
+        <header>
+        <h1 className="font-title text-4xl font-bold text-zinc-800 mb-2">
+          {section.pageTitle}
+        </h1>
+        {section.introSubtitle && (
+          <p className="font-title text-xl text-zinc-600 italic">
+            {section.introSubtitle}
+          </p>
+        )}
+      </header>
+
+      <div className="space-y-6 text-zinc-700 leading-relaxed font-title">
+        {section.introParagraphs.map((paragraph: string, index: number) => (
+          <p key={index} dangerouslySetInnerHTML={{ __html: paragraph }} />
+        ))}
+      </div>
+
+      {section.disclaimer && (
+        <Alert variant="destructive" className="bg-red-100 border-red-500 text-red-700 font-title">
+          {DisclaimerIcon && <DisclaimerIcon className="h-5 w-5 mr-2 text-red-800" />}
+          <AlertTitle className="font-bold text-red-800 font-title">
+            {section.disclaimer.title}
+          </AlertTitle>
+          <AlertDescription dangerouslySetInnerHTML={{ __html: section.disclaimer.description }} className="font-title" />
+        </Alert>
+      )}
+
+      {/* Renderizar todos os cards de táticas da seção, se houver */}
+      {section.tacticsKey &&
+        ["reunioes", "comunicacao", "processos", "tecnologia", "gestao-tempo", "cultura"].includes(section.tacticsKey) &&
+        Array.isArray(tacticsMap[section.tacticsKey as keyof typeof tacticsMap]) && (
+        <div className="flex flex-col gap-6">
+          {(tacticsMap[section.tacticsKey as keyof typeof tacticsMap] as TacticCardData[]).map((tactic: TacticCardData, idx: number) => (
+            <TacticCard key={idx} tactic={tactic} />
+          ))}
+        </div>
+      )}
+
+
+      {section.finalDisclaimer && (
+         <Alert variant="destructive" className="bg-red-100 border-red-500 text-red-700 mt-12">
+          {FinalDisclaimerIcon && <FinalDisclaimerIcon className="h-5 w-5 mr-2 text-red-800" />}
+          <AlertTitle className="font-bold text-red-800">
+            {section.finalDisclaimer.title}
+          </AlertTitle>
+          <AlertDescription dangerouslySetInnerHTML={{ __html: section.finalDisclaimer.description }} />
+        </Alert>
+      )}
+
+      {/* Navegação entre seções e índice */}
+      <div className="flex flex-col items-center gap-4 mt-14 mb-8">
+        <SectionNavigation currentSlug={section.slug} />
+      </div>
+      </article>
+    </SectionContentWrapper>
+  );
+}
+
+// Navegação entre seções
+import { manualSections } from '@/lib/manual-content';
+
+function SectionNavigation({ currentSlug }: { currentSlug: string }) {
+  const idx = manualSections.findIndex((s) => s.slug === currentSlug);
+  const prev = idx > 0 ? manualSections[idx - 1] : null;
+  const next = idx < manualSections.length - 1 ? manualSections[idx + 1] : null;
+
+  return (
+    <div className="flex justify-between w-full items-center">
+      {prev && (
+        <a href={`/manual/${prev.slug}`} className="px-4 py-2 rounded bg-zinc-100 hover:bg-zinc-200 text-zinc-700 font-medium border border-zinc-200 shadow-sm transition flex items-center gap-2">
+          <span>← {prev.navTitle}</span>
+          {sectionEmojis[prev.slug] && <span className="text-xl">{sectionEmojis[prev.slug]}</span>}
+        </a>
+      )}
+      {!prev && <div />} {/* Espaçador para manter o botão 'next' na direita quando 'prev' não existe */}
+      {next && (
+        <a href={`/manual/${next.slug}`} className="px-4 py-2 rounded bg-zinc-100 hover:bg-zinc-200 text-zinc-700 font-medium border border-zinc-200 shadow-sm transition flex items-center gap-2">
+          {sectionEmojis[next.slug] && <span className="text-xl">{sectionEmojis[next.slug]}</span>}
+          <span>{next.navTitle} →</span>
+        </a>
+      )}
+    </div>
+  );
+}
