@@ -142,7 +142,6 @@ pageTitle: "7. Quiz do Sabotador Interno",
 introSubtitle: "Descubra sua potência de sabotagem!",
     introParagraphs: [
       "Após esta jornada pelas artes obscuras da sabotagem corporativa, chegou o momento da verdade. Será que, por trás da sua fachada de profissional dedicado, existe um gênio da disfunção esperando para ser reconhecido? É hora de uma profunda autoanálise (corporativa, claro). Prepare-se para confrontar seus próprios hábitos e descobrir qual arquétipo de sabotador ressoa com sua alma (ou com seu crachá).",
-      "(Quiz Interativo: \"Qual o seu grau de maestria em Sabotagem Corporativa?\") - Em breve!",
       "Introdução ao Quiz: \"Responda com sinceridade (ou com a sinceridade que seu cargo permite) e revele seu potencial oculto para transformar ordem em caos elegante.\""
     ]
   },

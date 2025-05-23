@@ -1,15 +1,12 @@
 "use client";
 
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
 import Sidebar from '@/components/Sidebar';
 import Header from '@/components/Header';
 import { SidebarProvider, SidebarInset } from '@/components/ui/sidebar';
 
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const [isSheetOpen, setIsSheetOpen] = useState(false);
 
   const isHome = pathname === '/';
   return (

@@ -4,12 +4,6 @@ import { TacticCard } from '@/components/TacticCard';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { notFound } from 'next/navigation';
 
-interface ManualPageProps {
-  params: {
-    slug: string;
-  };
-}
-
 export async function generateStaticParams() {
   // For Next.js to statically generate pages during build
   const { manualSections } = await import('@/lib/manual-content');
@@ -18,7 +12,7 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function ManualPage({ params }: ManualPageProps) {
+export default function ManualPage({ params }: { params: { slug: string } }) {
   const section: ManualSection | undefined = getSectionData(params.slug);
 
   if (!section) {
