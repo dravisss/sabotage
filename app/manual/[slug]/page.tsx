@@ -1,30 +1,29 @@
-import { getSectionData, ManualSection, tacticsMap, TacticCardData, sectionEmojis } from '@/lib/manual-content';
+import { getSectionData, ManualSection, tacticsMap, TacticCardData, sectionEmojis, manualSections as allManualSections } from '@/lib/manual-content'; 
 import SectionContentWrapper from '@/components/SectionContentWrapper';
 import { TacticCard } from '@/components/TacticCard';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { notFound } from 'next/navigation';
 
-export async function generateStaticParams() {
+export async function generateStaticParams(): Promise<{ slug: string }[]> { 
   // For Next.js to statically generate pages during build
-  const { manualSections } = await import('@/lib/manual-content');
-  return manualSections.map((section: ManualSection) => ({
+  return allManualSections.map((section: ManualSection) => ({
     slug: section.slug,
   }));
 }
 
 // Define the props type for the page
 interface ManualPageProps {
-  params: { slug: string };
-  // searchParams?: { [key: string]: string | string[] | undefined }; // Uncomment if you use searchParams
+  params: Promise<{ slug: string }>; 
+  searchParams?: { [key: string]: string | string[] | undefined };
 }
 
-// Make the component async. The NextPage type is removed.
-async function ManualPage({ params }: ManualPageProps) {
-  const { slug } = await params;
+// Make the component async.
+async function ManualPage({ params }: ManualPageProps) { 
+  const { slug } = await params; 
   const section: ManualSection | undefined = getSectionData(slug);
 
   if (!section) {
-    notFound(); // Triggers 404 page if slug is invalid
+    notFound(); 
   }
 
   const { Icon: DisclaimerIcon } = section.disclaimer || {};
@@ -83,22 +82,20 @@ async function ManualPage({ params }: ManualPageProps) {
 
       {/* Navegação entre seções e índice */}
       <div className="flex flex-col items-center gap-4 mt-14 mb-8">
-        <SectionNavigation currentSlug={section.slug} />
+        <SectionNavigation currentSlug={slug} />
       </div>
       </article>
     </SectionContentWrapper>
   );
 }
 
-export default ManualPage; // Export default after definition
+export default ManualPage; 
 
 // Navegação entre seções
-import { manualSections } from '@/lib/manual-content'; // This import can stay here or be moved to the top
-
 function SectionNavigation({ currentSlug }: { currentSlug: string }) {
-  const idx = manualSections.findIndex((s) => s.slug === currentSlug);
-  const prev = idx > 0 ? manualSections[idx - 1] : null;
-  const next = idx < manualSections.length - 1 ? manualSections[idx + 1] : null;
+  const idx = allManualSections.findIndex((s) => s.slug === currentSlug);
+  const prev = idx > 0 ? allManualSections[idx - 1] : null;
+  const next = idx < allManualSections.length - 1 ? allManualSections[idx + 1] : null;
 
   return (
     <div className="flex justify-between w-full items-center">
@@ -108,7 +105,7 @@ function SectionNavigation({ currentSlug }: { currentSlug: string }) {
           {sectionEmojis[prev.slug] && <span className="text-xl">{sectionEmojis[prev.slug]}</span>}
         </a>
       )}
-      {!prev && <div />} {/* Espaçador para manter o botão 'next' na direita quando 'prev' não existe */}
+      {!prev && <div />} 
       {next && (
         <a href={`/manual/${next.slug}`} className="px-4 py-2 rounded bg-zinc-100 hover:bg-zinc-200 text-zinc-700 font-medium border border-zinc-200 shadow-sm transition flex items-center gap-2">
           {sectionEmojis[next.slug] && <span className="text-xl">{sectionEmojis[next.slug]}</span>}
