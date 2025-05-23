@@ -14,13 +14,11 @@ export async function generateStaticParams(): Promise<{ slug: string }[]> {
 // Define the props type for the page
 interface ManualPageProps {
   params: Promise<{ slug: string }>;
-  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
 // Make the component async.
-async function ManualPage({ params, searchParams }: ManualPageProps) { 
+async function ManualPage({ params }: ManualPageProps) { 
   const { slug } = await params; 
-  const resolvedSearchParams = searchParams ? await searchParams : undefined;
   const section: ManualSection | undefined = getSectionData(slug);
 
   if (!section) {
