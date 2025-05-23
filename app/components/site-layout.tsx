@@ -13,7 +13,7 @@ import {
   SheetClose
 } from '@/components/ui/sheet';
 import { MenuIcon, HomeIcon, BookOpenTextIcon } from 'lucide-react';
-import { manualSections } from '../lib/manual-content';
+import { manualSections } from '@/lib/manual-content';
 
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
