@@ -1,4 +1,3 @@
-import { NextPage } from 'next'; 
 import { getSectionData, ManualSection, tacticsMap, TacticCardData, sectionEmojis } from '@/lib/manual-content';
 import SectionContentWrapper from '@/components/SectionContentWrapper';
 import { TacticCard } from '@/components/TacticCard';
@@ -19,8 +18,10 @@ interface ManualPageProps {
   // searchParams?: { [key: string]: string | string[] | undefined }; // Uncomment if you use searchParams
 }
 
-const ManualPage: NextPage<ManualPageProps> = ({ params }) => {
-  const section: ManualSection | undefined = getSectionData(params.slug);
+// Make the component async. The NextPage type is removed.
+async function ManualPage({ params }: ManualPageProps) {
+  const { slug } = await params;
+  const section: ManualSection | undefined = getSectionData(slug);
 
   if (!section) {
     notFound(); // Triggers 404 page if slug is invalid
@@ -89,10 +90,10 @@ const ManualPage: NextPage<ManualPageProps> = ({ params }) => {
   );
 }
 
-export default ManualPage; 
+export default ManualPage; // Export default after definition
 
 // Navegação entre seções
-import { manualSections } from '@/lib/manual-content'; 
+import { manualSections } from '@/lib/manual-content'; // This import can stay here or be moved to the top
 
 function SectionNavigation({ currentSlug }: { currentSlug: string }) {
   const idx = manualSections.findIndex((s) => s.slug === currentSlug);
