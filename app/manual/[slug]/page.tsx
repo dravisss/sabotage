@@ -1,19 +1,25 @@
+import { NextPage } from 'next'; 
 import { getSectionData, ManualSection, tacticsMap, TacticCardData, sectionEmojis } from '@/lib/manual-content';
 import SectionContentWrapper from '@/components/SectionContentWrapper';
 import { TacticCard } from '@/components/TacticCard';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { notFound } from 'next/navigation';
 
-// Temporarily comment out for diagnosis
-// export async function generateStaticParams() {
-//   // For Next.js to statically generate pages during build
-//   const { manualSections } = await import('@/lib/manual-content');
-//   return manualSections.map((section: ManualSection) => ({
-//     slug: section.slug,
-//   }));
-// }
+export async function generateStaticParams() {
+  // For Next.js to statically generate pages during build
+  const { manualSections } = await import('@/lib/manual-content');
+  return manualSections.map((section: ManualSection) => ({
+    slug: section.slug,
+  }));
+}
 
-export default function ManualPage({ params }: { params: { slug: string } }) {
+// Define the props type for the page
+interface ManualPageProps {
+  params: { slug: string };
+  // searchParams?: { [key: string]: string | string[] | undefined }; // Uncomment if you use searchParams
+}
+
+const ManualPage: NextPage<ManualPageProps> = ({ params }) => {
   const section: ManualSection | undefined = getSectionData(params.slug);
 
   if (!section) {
@@ -83,8 +89,10 @@ export default function ManualPage({ params }: { params: { slug: string } }) {
   );
 }
 
+export default ManualPage; 
+
 // Navegação entre seções
-import { manualSections } from '@/lib/manual-content';
+import { manualSections } from '@/lib/manual-content'; 
 
 function SectionNavigation({ currentSlug }: { currentSlug: string }) {
   const idx = manualSections.findIndex((s) => s.slug === currentSlug);
