@@ -4,13 +4,14 @@ import { TacticCard } from '@/components/TacticCard';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { notFound } from 'next/navigation';
 
-export async function generateStaticParams() {
-  // For Next.js to statically generate pages during build
-  const { manualSections } = await import('@/lib/manual-content');
-  return manualSections.map((section: ManualSection) => ({
-    slug: section.slug,
-  }));
-}
+// Temporarily comment out for diagnosis
+// export async function generateStaticParams() {
+//   // For Next.js to statically generate pages during build
+//   const { manualSections } = await import('@/lib/manual-content');
+//   return manualSections.map((section: ManualSection) => ({
+//     slug: section.slug,
+//   }));
+// }
 
 export default function ManualPage({ params }: { params: { slug: string } }) {
   const section: ManualSection | undefined = getSectionData(params.slug);

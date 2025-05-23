@@ -21,7 +21,7 @@ Inspirado nos métodos consagrados da OSS (agência que precedeu a criação da 
           Esqueça bombas e planos mirabolantes. Aqui, suas armas são e-mails em cópia oculta, atas de reunião intermináveis e a sagrada trindade: <b>Processos, Comitês e PowerPoints</b>.
         </blockquote>
         <p className="font-title">
-sso objetivo? <span className="text-red-700 font-bold">Demonstrar, com requintes de ironia e uma pitada de humor</span>, como as ‘boas práticas’, quando levadas ao extremo do bom senso (ou da falta dele), se tornam as ferramentas mais poderosas para o colapso elegante de qualquer organização.
+Nosso objetivo é <span className="text-red-700 font-bold">demonstrar, com requintes de ironia e uma pitada de humor</span>, como as ‘boas práticas’, quando levadas ao extremo do bom senso (ou da falta dele), se tornam as ferramentas mais poderosas para o colapso elegante de qualquer organização.
         </p>
         <p className="font-semibold text-zinc-700 font-title">
 epare-se para reconhecer seus próprios pecados corporativos e, quem sabe, até otimizá-los.
