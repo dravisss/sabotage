@@ -1,6 +1,5 @@
 'use client';
 
-import { manualSections, ManualSection } from '@/lib/manual-content';
 import { TypewriterText } from '@/components/TypewriterText';
 import HomeIntro from '@/components/HomeIntro';
 import ManualSectionsGallery from '@/components/ManualSectionsGallery';
