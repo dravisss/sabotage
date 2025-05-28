@@ -3,6 +3,7 @@ import { Courier_Prime, Special_Elite } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider"
 import SiteLayout from '@/components/site-layout';
+import NewsletterModal from '@/components/NewsletterModal';
 
 const courierPrime = Courier_Prime({
   weight: ["400", "700"],
@@ -37,6 +38,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <NewsletterModal />
           <SiteLayout>{children}</SiteLayout>
         </ThemeProvider>
       </body>

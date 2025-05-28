@@ -1,5 +1,6 @@
 import { getSectionData, ManualSection, tacticsMap, TacticCardData, sectionEmojis, manualSections as allManualSections } from '@/lib/manual-content'; 
 import SectionContentWrapper from '@/components/SectionContentWrapper';
+import NewsletterSignupBlock from './NewsletterSignupBlock';
 import { TacticCard } from '@/components/TacticCard';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { notFound } from 'next/navigation';
@@ -78,6 +79,9 @@ async function ManualPage({ params }: ManualPageProps) {
           <AlertDescription dangerouslySetInnerHTML={{ __html: section.finalDisclaimer.description }} />
         </Alert>
       )}
+
+      {/* Bloco de inscrição de newsletter */}
+      <NewsletterSignupBlock />
 
       {/* Navegação entre seções e índice */}
       <div className="flex flex-col items-center gap-4 mt-14 mb-8">
