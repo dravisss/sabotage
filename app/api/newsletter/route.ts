@@ -56,7 +56,7 @@ export async function POST(req: NextRequest) {
     }
 
     return NextResponse.json({ success: true });
-  } catch (err) {
+  } catch {
     return NextResponse.json({ error: 'Erro ao conectar com ActiveCampaign' }, { status: 500 });
   }
 }

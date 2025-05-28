@@ -27,7 +27,7 @@ export default function NewsletterSignup() {
       } else {
         setError(data.error || 'Erro ao cadastrar. Tente novamente.');
       }
-    } catch (err) {
+    } catch {
       setError('Erro ao conectar. Tente novamente.');
     } finally {
       setLoading(false);

@@ -1,6 +1,6 @@
 "use client";
 import { ReactNode } from "react";
-import NewsletterSignup from "./NewsletterSignup";
+
 
 export default function SectionContentWrapper({ children }: { children: ReactNode }) {
   return (
