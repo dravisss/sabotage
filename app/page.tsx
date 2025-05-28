@@ -3,6 +3,7 @@
 import { TypewriterText } from '@/components/TypewriterText';
 import HomeIntro from '@/components/HomeIntro';
 import ManualSectionsGallery from '@/components/ManualSectionsGallery';
+import NewsletterSignup from '@/components/NewsletterSignup';
 
 export default function HomePage() {
   return (
@@ -24,6 +25,7 @@ export default function HomePage() {
             </div>
           </div>
         </div>
+        <NewsletterSignup />
       </main>
     </div>
   );
