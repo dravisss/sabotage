@@ -70,18 +70,28 @@ async function ManualPage({ params }: ManualPageProps) {
       )}
 
 
+      {/* Bloco de inscrição de newsletter */}
+      <NewsletterSignupBlock />
+
       {section.finalDisclaimer && (
          <Alert variant="destructive" className="bg-red-100 border-red-500 text-red-700 mt-12">
           {FinalDisclaimerIcon && <FinalDisclaimerIcon className="h-5 w-5 mr-2 text-red-800" />}
           <AlertTitle className="font-bold text-red-800">
             {section.finalDisclaimer.title}
           </AlertTitle>
-          <AlertDescription dangerouslySetInnerHTML={{ __html: section.finalDisclaimer.description }} />
+          <AlertDescription>
+            <div className="space-y-4">
+              <p>
+                Os fenômenos descritos neste manual não são apenas fruto de escolhas ou falhas individuais, mas refletem padrões e dinâmicas sistêmicas presentes nas organizações. Para transformar essas realidades, é necessário olhar para além do comportamento das pessoas e repensar as estruturas, regras e incentivos que moldam o dia a dia corporativo.
+              </p>
+              <p>
+Se você deseja se aprofundar no mundo do design organizacional e aprender como mudar as regras dos jogos viciados nas organizações, continue sua jornada de aprendizado conosco. Existem caminhos para criar ambientes menos chatos e obcecados por controle - e eles começam pelo entendimento crítico do sistema.
+              </p>
+            </div>
+          </AlertDescription>
         </Alert>
       )}
 
-      {/* Bloco de inscrição de newsletter */}
-      <NewsletterSignupBlock />
 
       {/* Navegação entre seções e índice */}
       <div className="flex flex-col items-center gap-4 mt-14 mb-8">

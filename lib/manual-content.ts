@@ -156,7 +156,7 @@ introSubtitle: "Descubra sua potência de sabotagem!",
       "Reconheceu, riu e se desesperou um pouquinho? Ótimo. Agora, que tal transformar essa epifania em algo... produtivo? Compartilhe este manual com aquele colega que entende a piada (ou que precisa urgentemente entendê-la). E lembre-se: a maior sabotagem é não aprender com os erros – especialmente os que cometemos com as melhores intenções."
     ],
     finalDisclaimer: {
-      title: "🚨 REFORÇO CRÍTICO – ÚLTIMO AVISO! 🚨",
+title: "🚨 ÚLTIMO AVISO! 🚨",
       description: "Este material é uma SÁTIRA. Uma CRÍTICA. Uma BRINCADEIRA COM FUNDO DE VERDADE (bem fundo, às vezes). A aplicação literal das 'táticas' aqui descritas pode resultar em: perda de produtividade real (quem diria?), olhares de reprovação, feedback construtivo do seu gestor (o tipo que não é sanduíche) e, possivelmente, uma carreira brilhante como... consultor em como não fazer as coisas. <br/><strong>A responsabilidade por um ambiente de trabalho funcional e minimamente são ainda é sua.</strong> Não diga que não avisamos... duas vezes.",
       Icon: AlertCircle
     }
