@@ -11,20 +11,20 @@ export default function HomeIntro() {
 Cuidado! O conhecimento contido neste manual é volátil, corrosivo e comprovadamente eficaz.
           </AlertTitle>
           <AlertDescription className="text-red-700 mt-2">
-Mantenha-o longe de estagiários otimistas incorrigíveis e, principalmente, de pessoas que possuem muito poder e não serão questionadas se usarem esse conhecimento. 
+Mantenha-o longe de estagiários otimistas e, principalmente, de pessoas que possuem muito poder e não serão questionadas se usarem esse conhecimento. 
           </AlertDescription>
         </Alert>
         <p className="font-title">
 Inspirado nos métodos consagrados da OSS (agência que precedeu a criação da CIA), este guia é a sua bíblia moderna para a arte sutil da desestabilização corporativa.
         </p>
         <blockquote className="border-l-4 border-red-400 pl-4 italic text-zinc-600 bg-zinc-50 font-title">
-          Esqueça bombas e planos mirabolantes. Aqui, suas armas são e-mails em cópia oculta, atas de reunião intermináveis e a sagrada trindade: <b>Processos, Comitês e PowerPoints</b>.
+Esqueça bombas e planos mirabolantes. Aqui, suas armas são e-mails em cópia oculta, atas de reunião intermináveis e a sagrada trindade: <b>Processos, Comitês e PowerPoints</b>.
         </blockquote>
         <p className="font-title">
 Nosso objetivo é <span className="text-red-700 font-bold">demonstrar, com requintes de ironia e uma pitada de humor</span>, como as ‘boas práticas’, quando levadas ao extremo do bom senso (ou da falta dele), se tornam as ferramentas mais poderosas para o colapso elegante de qualquer organização.
         </p>
         <p className="font-semibold text-zinc-700 font-title">
-epare-se para reconhecer seus próprios pecados corporativos e, quem sabe, até otimizá-los.
+Prepare-se para reconhecer seus próprios pecados corporativos e, quem sabe, até otimizá-los.
         </p>
 
       </div>
