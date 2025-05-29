@@ -1,7 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(req: NextRequest) {
-  const { name, email } = await req.json();
+  const { name, email, honeypot } = await req.json();
+
+  // Honeypot anti-bot check
+  if (honeypot && honeypot.trim() !== '') {
+    return NextResponse.json({ error: 'Bot detectado' }, { status: 400 });
+  }
 
   if (!email || typeof email !== 'string') {
     return NextResponse.json({ error: 'Email inválido' }, { status: 400 });

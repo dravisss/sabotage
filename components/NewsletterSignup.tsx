@@ -8,6 +8,8 @@ export default function NewsletterSignup() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
+  // Honeypot
+  const [honeypot, setHoneypot] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -18,7 +20,7 @@ export default function NewsletterSignup() {
       const res = await fetch('/api/newsletter', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email }),
+        body: JSON.stringify({ name, email, honeypot }),
       });
       const data = await res.json();
       if (res.ok && data.success) {
@@ -38,7 +40,21 @@ export default function NewsletterSignup() {
     <div className="mt-12 p-6 bg-zinc-50 border border-zinc-200 rounded-lg shadow max-w-xl mx-auto">
       <h2 className="font-title text-2xl font-bold mb-2 text-red-700">Clube dos Agentes de Mudança</h2>
       <p className="text-zinc-700 mb-4">Entre para a newsletter da Target Teal e ganhe acesso imediato aos nossos livros, artigos e metodologias para transformar organizações.</p>
-      <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
+      <form className="flex flex-col gap-3" onSubmit={handleSubmit} autoComplete="off">
+        {/* Honeypot field (hidden from users, visible to bots) */}
+        <div style={{ display: 'none' }} aria-hidden="true">
+          <label>
+            Não preencha este campo:
+            <input
+              type="text"
+              name="website"
+              tabIndex={-1}
+              autoComplete="off"
+              value={honeypot}
+              onChange={e => setHoneypot(e.target.value)}
+            />
+          </label>
+        </div>
         <input
           type="text"
           required
