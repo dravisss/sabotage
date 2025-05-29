@@ -61,7 +61,7 @@ export default function NewsletterSignup() {
           value={name}
           onChange={e => setName(e.target.value)}
           placeholder="Seu nome"
-          className="border border-zinc-300 rounded px-4 py-2 focus:ring-2 focus:ring-red-400 outline-none"
+          className="border border-zinc-300 rounded px-4 py-2 focus:ring-2 focus:ring-red-400 outline-none text-red-700 placeholder:text-red-300"
           disabled={loading}
         />
         <input
@@ -70,7 +70,7 @@ export default function NewsletterSignup() {
           value={email}
           onChange={e => setEmail(e.target.value)}
           placeholder="Seu e-mail"
-          className="border border-zinc-300 rounded px-4 py-2 focus:ring-2 focus:ring-red-400 outline-none"
+          className="border border-zinc-300 rounded px-4 py-2 focus:ring-2 focus:ring-red-400 outline-none text-red-700 placeholder:text-red-300"
           disabled={loading}
         />
         <label className="flex items-start gap-2 text-xs text-zinc-700">
