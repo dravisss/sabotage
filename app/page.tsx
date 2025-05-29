@@ -15,6 +15,12 @@ export default function HomePage() {
         <p className="text-xl italic text-zinc-600 text-center font-mono mb-8">
           <TypewriterText text="Como destruir sua organização com classe" delay={1200} />
         </p>
+        <img
+          src="/images/capa.png"
+          alt="Capa do Manual de Sabotagem Corporativa"
+          className="mx-auto mb-8 max-w-full h-auto"
+          style={{ maxHeight: 360 }}
+        />
         <HomeIntro />
         <ManualSectionsGallery />
         <div className="mt-12">
