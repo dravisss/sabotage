@@ -23,6 +23,7 @@ export default function HomePage() {
         />
         <HomeIntro />
         <ManualSectionsGallery />
+        <NewsletterSignup />
         <div className="mt-12">
           <div className="mt-10 bg-zinc-50 border border-zinc-300 text-zinc-600 shadow rounded-lg p-6 w-full">
             <div className="font-bold text-zinc-800 text-base mb-2 flex items-center gap-2">⚠️ ALERTA DE ALTA IMPRODUTIVIDADE:</div>
@@ -31,7 +32,6 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-        <NewsletterSignup />
       </main>
     </div>
   );

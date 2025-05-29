@@ -6,6 +6,7 @@ import { sabotageLevels, SabotageLevel } from '@/lib/quiz-content';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Linkedin, MessageCircle, Copy } from 'lucide-react';
+import NewsletterSignup from '@/components/NewsletterSignup';
 import Head from 'next/head'; // Para meta tags dinâmicas
 
 // Componente interno para evitar que a página inteira seja Suspense boundary
@@ -114,21 +115,10 @@ function QuizResultContent() {
             <p className="text-zinc-800 italic text-lg">Lema: &quot;{level.lema}&quot;</p>
             <p className="text-zinc-700 text-justify leading-relaxed">{level.description}</p>
             {totalScoreParam && <p className="font-bold text-zinc-800 text-xl">Sua Pontuação: {totalScoreParam}</p>}
-            
             <div className="pt-6">
-              <p className="text-lg font-semibold text-zinc-700 mb-3">Compartilhe seu resultado:</p>
-              <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
-                <Button onClick={shareOnWhatsApp} variant="outline" className="flex items-center gap-2 border-green-500 text-green-600 hover:bg-green-50">
-                  <MessageCircle size={20} /> WhatsApp
-                </Button>
-                <Button onClick={shareOnLinkedIn} variant="outline" className="flex items-center gap-2 border-blue-600 text-blue-700 hover:bg-blue-50">
-                  <Linkedin size={20} /> LinkedIn
-                </Button>
-                <Button onClick={copyToClipboard} variant="outline" className="flex items-center gap-2 border-zinc-500 text-zinc-600 hover:bg-zinc-100">
-                  <Copy size={20} /> {copied ? "Copiado!" : "Copiar Link"}
-                </Button>
-              </div>
+              <NewsletterSignup />
             </div>
+            
           </CardContent>
           <CardFooter className="flex flex-col sm:flex-row justify-center gap-4 pt-6">
             <Button onClick={() => router.push('/manual/sabotador-interno')} variant="outline" className="font-title border-red-600 text-red-600 hover:bg-red-50">
