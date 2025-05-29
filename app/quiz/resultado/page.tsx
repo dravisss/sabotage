@@ -5,7 +5,7 @@ import { useSearchParams, useRouter } from 'next/navigation';
 import { sabotageLevels, SabotageLevel } from '@/lib/quiz-content';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Linkedin, MessageCircle, Copy } from 'lucide-react';
+
 import NewsletterSignup from '@/components/NewsletterSignup';
 import Head from 'next/head'; // Para meta tags dinâmicas
 
@@ -15,7 +15,7 @@ function QuizResultContent() {
   const router = useRouter();
   const [level, setLevel] = useState<SabotageLevel | null>(null);
   const [totalScoreParam, setTotalScoreParam] = useState<string | null>(null);
-  const [copied, setCopied] = useState(false);
+
   const [pageUrl, setPageUrl] = useState('');
 
   useEffect(() => {
@@ -60,29 +60,7 @@ function QuizResultContent() {
   const imageUrl = `${siteUrl}/images/${level.imageFileName}`;
 
   // --- Share Functions ---
-  const generateShareText = () => {
-    return `Meu nível de Entropia Organizacional é: ${level.title}! ✨ Descubra o seu no Teste de Potencial de Entropia:`;
-  };
 
-  const shareOnWhatsApp = () => {
-    const text = encodeURIComponent(`${generateShareText()} ${pageUrl}`);
-    window.open(`https://wa.me/?text=${text}`, '_blank');
-  };
-
-  const shareOnLinkedIn = () => {
-    const url = encodeURIComponent(pageUrl);
-    // LinkedIn prefere que o título e descrição venham das meta tags da URL compartilhada
-    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank');
-  };
-
-  const copyToClipboard = () => {
-    const textToCopy = `${generateShareText()} ${pageUrl}\n\nLema: &quot;${level.lema}&quot;\n${level.emoji}`;
-    navigator.clipboard.writeText(textToCopy).then(() => {
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    });
-  };
-  // --- End Share Functions ---
 
   return (
     <>
