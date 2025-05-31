@@ -11,10 +11,28 @@ interface TacticCardProps {
 export const TacticCard: React.FC<TacticCardProps> = ({ tactic }) => {
   const [expanded, setExpanded] = useState(false);
 
+  const handleExpand = () => {
+    setExpanded((v) => !v);
+    if (!expanded) {
+      // Só conta se for a primeira vez que expande esse card
+      const clicked = JSON.parse(localStorage.getItem('tacticClicked') || '[]');
+      if (!clicked.includes(tactic.title)) {
+        const updated = [...clicked, tactic.title];
+        localStorage.setItem('tacticClicked', JSON.stringify(updated));
+        let clicks = Number(localStorage.getItem('tacticClicks') || 0);
+        clicks++;
+        localStorage.setItem('tacticClicks', clicks.toString());
+        if (clicks === 3) {
+          localStorage.setItem('showNewsletterModal', 'true');
+        }
+      }
+    }
+  };
+
   return (
     <Card
       className={`transition-all duration-300 cursor-pointer overflow-hidden ${expanded ? 'shadow-2xl bg-white scale-[1.03]' : 'hover:scale-[1.01]'} border border-zinc-200 mb-6`}
-      onClick={() => setExpanded((v) => !v)}
+      onClick={handleExpand}
       aria-expanded={expanded}
     >
       <CardHeader className="flex flex-row items-center gap-4 px-5 py-4">
@@ -66,7 +84,7 @@ export const TacticCard: React.FC<TacticCardProps> = ({ tactic }) => {
           </div>
           {tactic.antidote && (
             <div>
-              <p className="font-semibold text-green-800 mb-1 font-title">Como Identificar e Neutralizar:</p>
+              <p className="font-semibold text-green-800 mb-1 font-title">Antídoto:</p>
               <blockquote className="pl-3 border-l-4 border-green-400 italic text-green-900 bg-green-50 rounded font-title">
                 {tactic.antidote}
               </blockquote>

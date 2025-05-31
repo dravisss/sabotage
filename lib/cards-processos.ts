@@ -3,9 +3,9 @@ import { TacticCardData } from './manual-content';
 export const processosTactics: TacticCardData[] = [
   // TÁTICAS LEVES
   {
-    title: "A solicitação de justificativa detalhada",
+    title: "Burocracia Express",
     icon: "📄",
-    subtitle: "Um post-it exige três parágrafos. A burocracia do trivial.",
+    subtitle: "Qual é a justificativa?",
     level: "Tática Leve",
     damageLevel: 3,
     dangerTags: ["JustificativaExcessiva"],
@@ -22,7 +22,7 @@ export const processosTactics: TacticCardData[] = [
     tags: ["#Processos", "#Burocracia", "#JustificativaExcessiva"]
   },
   {
-    title: "O guardião do carimbo",
+    title: "Selo Supremo",
     icon: "🔖",
     subtitle: "O carimbo essencial é refém de um guardião sobrecarregado.",
     level: "Tática Leve",
@@ -42,7 +42,7 @@ export const processosTactics: TacticCardData[] = [
   },
   // TÁTICAS DRASTICAS
   {
-    title: "A auditoria preventiva constante",
+    title: "Paranoia Formal",
     icon: "🔍",
     subtitle: "Auditoria sem trégua. A conformidade que impede o trabalho.",
     level: "Tática Drástica",
@@ -61,9 +61,9 @@ export const processosTactics: TacticCardData[] = [
     tags: ["#Processos", "#Auditoria", "#ParalisiaOperacional"]
   },
   {
-    title: "O manual de procedimentos intransponível",
+    title: "Guia Esquecido",
     icon: "📚",
-    subtitle: "O manual sagrado. Tão complexo que ninguém lê, todos (tentam) seguir.",
+    subtitle: "Tão complexo que ninguém lê.",
     level: "Tática Drástica",
     damageLevel: 4,
     dangerTags: ["ManualIntransponível", "ComplexidadeExcessiva"],
@@ -80,9 +80,9 @@ export const processosTactics: TacticCardData[] = [
     tags: ["#Processos", "#Manual", "#ComplexidadeExcessiva"]
   },
   {
-    title: "A exigência de evidências excessivas",
+    title: "Mania de Evidência",
     icon: "📸",
-    subtitle: "Evidência para cada passo. Se não tem print, não aconteceu.",
+    subtitle: "Mania de controle",
     level: "Tática Drástica",
     damageLevel: 4,
     dangerTags: ["EvidênciaExcessiva", "ControleAbusivo"],

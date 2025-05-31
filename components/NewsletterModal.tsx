@@ -7,13 +7,20 @@ export default function NewsletterModal() {
   const [dismissed, setDismissed] = useState(false);
 
   useEffect(() => {
+    // Abre por intenção de saída
     const handleMouseOut = (e: MouseEvent) => {
-      // Detecta intenção de saída (mouse para fora do topo)
       if (!dismissed && e.clientY < 10) {
         setOpen(true);
       }
     };
     document.addEventListener('mouseout', handleMouseOut);
+    // Abre por flag do localStorage
+    if (!dismissed && typeof window !== 'undefined') {
+      if (localStorage.getItem('showNewsletterModal') === 'true') {
+        setOpen(true);
+        localStorage.removeItem('showNewsletterModal');
+      }
+    }
     return () => document.removeEventListener('mouseout', handleMouseOut);
   }, [dismissed]);
 

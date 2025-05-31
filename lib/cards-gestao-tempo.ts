@@ -3,7 +3,7 @@ import { TacticCardData } from './manual-content';
 export const gestaoTempoTactics: TacticCardData[] = [
   // TÁTICAS LEVES
   {
-    title: "A Entrega Retroativa",
+    title: "Pra Ontem",
     icon: "🕰️",
     subtitle: "Pra ontem, sempre!",
     level: "Tática Leve",
@@ -23,7 +23,7 @@ export const gestaoTempoTactics: TacticCardData[] = [
     tags: ["#GestãoDeTempo", "#Prazos", "#Pressão"]
   },
   {
-    title: "A Repriorização Diária",
+    title: "Incêndio Diário",
     icon: "⏳",
     subtitle: "Cada dia um novo incêndio.",
     level: "Tática Leve",
@@ -43,7 +43,7 @@ export const gestaoTempoTactics: TacticCardData[] = [
     tags: ["#GestãoDeTempo", "#Prioridades", "#Mudança"]
   },
   {
-    title: "O Malabarismo Multitarefa",
+    title: "Multitasking",
     icon: "🤹‍♂️",
     subtitle: "Comece tudo, termine nada.",
     level: "Tática Leve",
@@ -63,7 +63,7 @@ export const gestaoTempoTactics: TacticCardData[] = [
     tags: ["#GestãoDeTempo", "#Multitarefa", "#Foco"]
   },
   {
-    title: "O Efeito Dominó de Urgências",
+    title: "Estresse Viral",
     icon: "🧨",
     subtitle: "A urgência de um vira a urgência de todos.",
     level: "Tática Leve",
@@ -83,7 +83,7 @@ export const gestaoTempoTactics: TacticCardData[] = [
     tags: ["#GestãoDeTempo", "#Urgência", "#Prioridades"]
   },
   {
-    title: "A Reunião Diária de Microgerenciamento",
+    title: "Microdoses de Controle",
     icon: "📋",
     subtitle: "Detalhe tudo, avance nada.",
     level: "Tática Leve",
@@ -103,7 +103,7 @@ export const gestaoTempoTactics: TacticCardData[] = [
     tags: ["#GestãoDeTempo", "#Microgerenciamento", "#Reunião"]
   },
   {
-    title: "A Cultura do 'Responda Imediatamente'",
+    title: "Ansiedade Digital",
     icon: "⚡",
     subtitle: "Responder rápido é mais importante que pensar.",
     level: "Tática Leve",
@@ -125,7 +125,7 @@ export const gestaoTempoTactics: TacticCardData[] = [
 
   // TÁTICAS DRASTICAS
   {
-    title: "Os OKRs Indecifráveis",
+    title: "Métrica Críptica",
     icon: "🧩",
     subtitle: "Siga o que você não entende.",
     level: "Tática Drástica",
@@ -145,7 +145,7 @@ export const gestaoTempoTactics: TacticCardData[] = [
     tags: ["#GestãoDeTempo", "#OKR", "#Metas"]
   },
   {
-    title: "As Metas Impostas",
+    title: "Meta Forçada",
     icon: "🎯",
     subtitle: "Meta boa é meta recebida por e-mail.",
     level: "Tática Drástica",
@@ -165,7 +165,7 @@ export const gestaoTempoTactics: TacticCardData[] = [
     tags: ["#GestãoDeTempo", "#Metas", "#Participação"]
   },
   {
-    title: "O Planejamento Estratégico Anual (Engavetado)",
+    title: "Plano Fantasma",
     icon: "📅",
     subtitle: "Planeje por semanas para operar no improviso.",
     level: "Tática Drástica",
@@ -185,7 +185,7 @@ export const gestaoTempoTactics: TacticCardData[] = [
     tags: ["#GestãoDeTempo", "#Planejamento", "#Estratégia"]
   },
   {
-    title: "A 'Prioridade Zero'",
+    title: "Tudo Urgente",
     icon: "🚨",
     subtitle: "Tudo é urgente, nada é importante.",
     level: "Tática Drástica",

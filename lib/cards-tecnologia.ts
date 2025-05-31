@@ -23,8 +23,8 @@ export const tecnologiaTactics: TacticCardData[] = [
     tags: ["#Tecnologia", "#Planilhas", "#FerramentaInadequada"]
   },
   {
-    title: "O bloqueio de segurança paralisante",
-icon: "🚫",
+    title: "O empata software",
+    icon: "🚫",
     subtitle: "Bloquear o acesso ao drive 'por segurança'.",
     level: "Tática Leve",
     damageLevel: 3,
@@ -41,9 +41,9 @@ icon: "🚫",
     tags: ["#Tecnologia", "#Segurança", "#Bloqueio", "#Colaboração"]
   },
   {
-    title: "O campeão da ferramenta obscura",
+    title: "App novo, denovo.",
     icon: "🛠️",
-    subtitle: "Insista que toda a equipe adote uma ferramenta nova e pouco conhecida para uma tarefa específica.",
+    subtitle: "Insista que toda a equipe adote uma ferramenta nova",
     level: "Tática Leve",
     damageLevel: 3,
     dangerTags: ["FerramentaObscura"],
@@ -115,7 +115,7 @@ icon: "🚫",
 
   // TÁTICAS DRASTICAS
   {
-    title: "A nova solução sem transição",
+    title: "Upgrade Caótico",
     icon: "🚀",
     subtitle: "Promover uma solução nova sem migração adequada.",
     level: "Tática Drástica",
@@ -205,9 +205,9 @@ icon: "🚫",
     tags: ["#Tecnologia", "#MigraçãoEterna", "#GestãoDeProjetos", "#Desmotivação"]
   },
   {
-    title: "A TI como torre de marfim",
+title: "A TI como torre de marfim",
     icon: "🏰",
-    subtitle: "Equipe de TI isolada e processos rígidos tornam o suporte uma jornada épica.",
+subtitle: "Equipe de TI blindada e inacessível.",
     level: "Tática Drástica",
     damageLevel: 4,
     dangerTags: ["TIIsolada"],

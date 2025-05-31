@@ -5,7 +5,7 @@ export const comunicacaoTactics: TacticCardData[] = [
   {
     title: "A multiplicação de canais de WhatsApp",
     icon: "💬",
-    subtitle: "Um novo projeto? Novo grupo! A organização que desorganiza.",
+    subtitle: "Um novo projeto? Novo grupo!",
     level: "Tática Leve",
     damageLevel: 3,
     dangerTags: ["Fragmentação", "WhatsApp"],
@@ -24,7 +24,7 @@ export const comunicacaoTactics: TacticCardData[] = [
   {
     title: "O assunto vago",
     icon: "❓",
-    subtitle: "E-mails 'Urgentes' sem urgência: o mistério no seu inbox.",
+    subtitle: "Urgente! Só que não",
     level: "Tática Leve",
     damageLevel: 2,
     dangerTags: ["AssuntoVago"],
@@ -43,7 +43,7 @@ export const comunicacaoTactics: TacticCardData[] = [
   {
     title: "O loop de feedback por e-mail",
     icon: "🔄",
-    subtitle: "Feedback por e-mail: a saga do 'final_agora_vai_v3.docx'.",
+    subtitle: "Feedback v3.docx",
     level: "Tática Leve",
     damageLevel: 3,
     dangerTags: ["FeedbackFragmentado", "VersãoExcessiva"],
@@ -63,7 +63,7 @@ export const comunicacaoTactics: TacticCardData[] = [
   {
     title: "O repositório de informações fantasma",
     icon: "👻",
-    subtitle: "O Drive 'organizado': onde a informação existe, mas ninguém acha.",
+    subtitle: "Drive da infoxicação",
     level: "Tática Drástica",
     damageLevel: 4,
     dangerTags: ["Desorganização", "RepositórioFantasma"],
@@ -82,7 +82,7 @@ export const comunicacaoTactics: TacticCardData[] = [
   {
     title: "Comunicados contraditórios",
     icon: "⚡",
-    subtitle: "Comunicados opostos: a arte de confundir com mensagens oficiais.",
+    subtitle: "A arte do Gaslighting",
     level: "Tática Drástica",
     damageLevel: 4,
     dangerTags: ["Contradição", "Ruído"],
@@ -99,9 +99,9 @@ export const comunicacaoTactics: TacticCardData[] = [
     tags: ["#Comunicação", "#Contradição", "#Ruído"]
   },
   {
-    title: "Silêncio institucional",
+    title: "Mudez Oficial",
     icon: "🤐",
-    subtitle: "Silêncio oficial: o combustível perfeito para a rádio-corredor.",
+    subtitle: "Não diga nada sobre nada",
     level: "Tática Drástica",
     damageLevel: 5,
     dangerTags: ["Silêncio", "FaltaDeTransparência"],
@@ -120,7 +120,7 @@ export const comunicacaoTactics: TacticCardData[] = [
   {
     title: "O E-mail com Plateia",
     icon: "📧",
-    subtitle: "Cc para todos: diluindo a responsabilidade em um mar de e-mails.",
+    subtitle: "Todo mundo precisa saber",
     level: "Tática Leve",
     damageLevel: 3,
     dangerTags: ["Cultura do Copia"],
@@ -141,7 +141,7 @@ export const comunicacaoTactics: TacticCardData[] = [
   {
     title: "Os canais múltiplos",
     icon: "📱",
-    subtitle: "Canais infinitos, atenção finita: a fragmentação que esgota.",
+    subtitle: "A fragmentação que esgota",
     level: "Tática Leve",
     damageLevel: 3,
     dangerTags: ["Fragmentação"],
@@ -160,9 +160,9 @@ export const comunicacaoTactics: TacticCardData[] = [
     tags: ["#Comunicação", "#WhatsAppCorporativo", "#Fragmentação", "#PerdaDeFoco"]
   },
   {
-    title: "O Áudio Interminável",
+    title: "Podcast Forçado",
     icon: "🎤",
-    subtitle: "Áudios de 5 minutos: a mensagem que vira podcast indesejado.",
+    subtitle: "Olha o podcast!",
     level: "Tática Drástica",
     damageLevel: 4,
     dangerTags: ["Falta de Objetividade"],
@@ -183,7 +183,7 @@ export const comunicacaoTactics: TacticCardData[] = [
   {
     title: "A Redundância",
     icon: "🔁",
-    subtitle: "E-mail, Zap, Slack: a mesma mensagem, em todo lugar, o tempo todo.",
+    subtitle: "A mesma mensagem, em todo lugar, o tempo todo",
     level: "Tática Leve",
     damageLevel: 3,
     dangerTags: ["Sobrecarga Informativa"],

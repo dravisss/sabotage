@@ -5,7 +5,7 @@ export const culturaTactics: TacticCardData[] = [
   {
     title: "O Otimismo Tóxico",
     icon: "😃",
-    subtitle: "Sorria, tudo está ótimo (mesmo quando não está)",
+    subtitle: "Sorria, tá tudo ótimo!",
     level: "Tática Leve",
     damageLevel: 2,
     dangerTags: ["Positividade Excessiva"],
@@ -45,7 +45,7 @@ export const culturaTactics: TacticCardData[] = [
   {
     title: "A Pesquisa de Clima Decorativa",
     icon: "📊",
-    subtitle: "Pergunte, finja ouvir, arquive o resultado",
+    subtitle: "Finja ouvir e arquive",
     level: "Tática Leve",
     damageLevel: 2,
     dangerTags: ["Pesquisa Inócua"],
@@ -63,7 +63,7 @@ export const culturaTactics: TacticCardData[] = [
     tags: ["#Cultura", "#PesquisaDeClima", "#Inação", "#PrestaçãoDeContas"]
   },
   {
-    title: "O Elogio em Público, Correção no Privado (Extremo Oposto)",
+    title: "Elogio em Público, Correção no Privado",
     icon: "🔊",
     subtitle: "Critique alto, celebre baixo",
     level: "Tática Leve",
@@ -83,7 +83,7 @@ export const culturaTactics: TacticCardData[] = [
     tags: ["#Cultura", "#Feedback", "#Reconhecimento", "#PsicologiaDoMedo"]
   },
   {
-    title: "A Competição por Recursos Triviais",
+    title: "guerra das cadeiras",
     icon: "💺",
     subtitle: "Sobreviva à guerra das cadeiras",
     level: "Tática Leve",
@@ -103,7 +103,7 @@ export const culturaTactics: TacticCardData[] = [
     tags: ["#Cultura", "#Escassez", "#Competição", "#GestãoColetiva"]
   },
   {
-    title: "A Celebração da Hora Extra",
+    title: "burnout premium",
     icon: "⏰",
     subtitle: "Quem sai cedo não é comprometido",
     level: "Tática Leve",
@@ -125,7 +125,7 @@ export const culturaTactics: TacticCardData[] = [
   {
     title: "O 'Team Building' Forçado",
     icon: "🥳",
-    subtitle: "Integração obrigatória: diversão sob ameaça",
+    subtitle: "Diversão obrigatória",
     level: "Tática Leve",
     damageLevel: 2,
     dangerTags: ["Integração Artificial", "Falta de Consentimento"],
@@ -145,9 +145,9 @@ export const culturaTactics: TacticCardData[] = [
 
   // TÁTICAS DRASTICAS
   {
-    title: "A Premiação do Abusador Performático",
+    title: "Troféu Tóxico",
     icon: "🏆",
-    subtitle: "O resultado importa, o resto é detalhe",
+    subtitle: "Resultado > tudo",
     level: "Tática Drástica",
     damageLevel: 5,
     dangerTags: ["Abuso", "Performance Tóxica"],
@@ -165,7 +165,7 @@ export const culturaTactics: TacticCardData[] = [
     tags: ["#Cultura", "#Abuso", "#Responsabilização", "#ProteçãoColetiva"]
   },
   {
-    title: "A Escuta Decorativa",
+    title: "Ouvido surdo",
     icon: "👂",
     subtitle: "Ouça tudo, mude nada",
     level: "Tática Drástica",
@@ -245,7 +245,7 @@ export const culturaTactics: TacticCardData[] = [
     tags: ["#Cultura", "#Medo", "#Controle", "#Proteção"]
   },
   {
-    title: "O Programa de 'Bem-Estar' Superficial",
+    title: "Bem estar Fake",
     icon: "🍏",
     subtitle: "Yoga e frutas para disfarçar a pressão",
     level: "Tática Drástica",
@@ -265,7 +265,7 @@ export const culturaTactics: TacticCardData[] = [
     tags: ["#Cultura", "#BemEstar", "#SaúdeMental", "#GestãoParticipativa"]
   },
   {
-    title: "A Normalização do Assédio Moral Sutil",
+    title: "A Normalização do Assédio Moral",
     icon: "🫥",
     subtitle: "Passivo-agressivo é quem pode",
     level: "Tática Drástica",

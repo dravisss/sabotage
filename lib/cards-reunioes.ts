@@ -3,7 +3,7 @@ import { TacticCardData } from './manual-content';
 export const reunioesTactics: TacticCardData[] = [
   // TÁTICAS LEVES
   {
-    title: "A tangente necessária",
+    title: "Pegando Carona",
     icon: "➡️",
     subtitle: "A arte de desviar do foco. Quando o 'só um parêntese' vira a pauta principal.",
     level: "Tática Leve",
@@ -22,9 +22,9 @@ export const reunioesTactics: TacticCardData[] = [
     tags: ["#Reuniões", "#Tangente", "#Foco"]
   },
   {
-    title: "Deixamos para a próxima",
+    title: "Fica pra Próxima",
     icon: "⏭️",
-    subtitle: "Reunião para marcar a próxima reunião. O ciclo infinito da indecisão.",
+subtitle: "Reunião para marcar a próxima reunião. O ciclo infinito da indecisão.",
     level: "Tática Leve",
     damageLevel: 2,
     dangerTags: ["Procrastinação", "ReuniãoInfinita"],
@@ -42,7 +42,7 @@ export const reunioesTactics: TacticCardData[] = [
   },
   // TÁTICAS DRASTICAS
   {
-    title: "O bloqueio por gosto pessoal",
+    title: "Querência",
     icon: "🚫",
     subtitle: "'Não gostei'. O veto pessoal que vale mais que qualquer argumento.",
     level: "Tática Drástica",
@@ -61,7 +61,7 @@ export const reunioesTactics: TacticCardData[] = [
     tags: ["#Reuniões", "#BloqueioPessoal", "#Decisão"]
   },
   {
-    title: "A decisão diluída no consenso",
+title: "Consenso Líquido",
     icon: "🌊",
     subtitle: "Consenso para tudo. A decisão que é de todos e de ninguém.",
     level: "Tática Drástica",
@@ -80,7 +80,7 @@ export const reunioesTactics: TacticCardData[] = [
     tags: ["#Reuniões", "#Consenso", "#Responsabilidade"]
   },
   {
-    title: "A matriz de decisão infinita",
+    title: "Critério infinito",
     icon: "🗂️",
     subtitle: "Matriz de decisão com 50 critérios. A análise que paralisa.",
     level: "Tática Drástica",
@@ -99,7 +99,7 @@ export const reunioesTactics: TacticCardData[] = [
     tags: ["#Reuniões", "#Decisão", "#Complexidade"]
   },
   {
-    title: "A busca pelo consenso absoluto",
+    title: "Unanimidade Mítica",
     icon: "🔒",
     subtitle: "Consenso de 100%. A busca pela unanimidade que impede qualquer avanço.",
     level: "Tática Drástica",
@@ -118,7 +118,7 @@ export const reunioesTactics: TacticCardData[] = [
     tags: ["#Reuniões", "#ConsensoAbsoluto", "#Paralisia"]
   },
   {
-    title: "O veto silencioso",
+    title: "Veto Mudo",
     icon: "🤫",
     subtitle: "A careta que congela decisões. O poder do veto não dito.",
     level: "Tática Drástica",
@@ -157,7 +157,7 @@ export const reunioesTactics: TacticCardData[] = [
     tags: ["#Reuniões", "#PautaVaga", "#TempoDesperdiçado", "#FalsaProdutividade"]
   },
   {
-    title: "A leitura da Ata",
+    title: "Ritual sonífero",
     icon: "📄",
     subtitle: "Leitura da ata na íntegra. O ritual que consome tempo e paciência.",
     level: "Tática Leve",
