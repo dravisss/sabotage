@@ -10,6 +10,32 @@ interface TacticCardProps {
   tactic: TacticCardData;
 }
 
+// TooltipButton: botão com tooltip simples ao passar o mouse
+const TooltipButton: React.FC<{ onClick: (e: React.MouseEvent) => void; label: string; children: React.ReactNode }> = ({ onClick, label, children }) => {
+  const [show, setShow] = useState(false);
+  return (
+    <div className="relative flex">
+      <button
+        onMouseEnter={() => setShow(true)}
+        onMouseLeave={() => setShow(false)}
+        onFocus={() => setShow(true)}
+        onBlur={() => setShow(false)}
+        onClick={onClick}
+        className="p-1 bg-white hover:bg-gray-200 rounded shadow"
+        aria-label={label}
+        type="button"
+      >
+        {children}
+      </button>
+      {show && (
+        <span className="absolute bottom-full right-1/2 translate-x-1/2 mb-1 px-2 py-1 rounded bg-zinc-800 text-xs text-white whitespace-nowrap shadow-lg z-10">
+          {label}
+        </span>
+      )}
+    </div>
+  );
+};
+
 export const TacticCard: React.FC<TacticCardProps> = ({ tactic }) => {
   const [expanded, setExpanded] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -111,6 +137,49 @@ Tags: ${tactic.tags?.join(', ')}
     }
   };
 
+  // Função para baixar imagem
+  const handleDownloadImage = async (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (!cardRef.current) return;
+    try {
+      const dataUrl = await toPng(cardRef.current, { cacheBust: true, backgroundColor: '#ffffff' });
+      const img = new Image();
+      img.src = dataUrl;
+      await new Promise((resolve, reject) => {
+        img.onload = resolve;
+        img.onerror = reject;
+      });
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+      const paddingBottom = 45;
+      const attributionLine1 = "Copiado de sabotagemcorporativa.org";
+      const attributionLine2 = "Feito com 💙 pela Target Teal";
+      const fontSize = 14;
+      const lineHeight = fontSize * 1.3;
+      canvas.width = img.width;
+      canvas.height = img.height + paddingBottom;
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(img, 0, 0);
+      ctx.fillStyle = '#222222';
+      ctx.font = `${fontSize}px sans-serif`;
+      ctx.textAlign = 'center';
+      ctx.fillText(attributionLine1, canvas.width / 2, img.height + lineHeight);
+      ctx.fillText(attributionLine2, canvas.width / 2, img.height + lineHeight * 2);
+      const finalDataUrl = canvas.toDataURL('image/png');
+      // Trigger download
+      const a = document.createElement('a');
+      a.href = finalDataUrl;
+      a.download = `${tactic.title.replace(/\s+/g, '_').toLowerCase()}.png`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    } catch (err) {
+      console.error('Failed to download image', err);
+    }
+  };
+
   return (
     <Card
       ref={cardRef}
@@ -183,8 +252,15 @@ Tags: ${tactic.tags?.join(', ')}
             )}
           </CardContent>
           <div className="absolute bottom-2 right-2 flex gap-2" onClick={e => e.stopPropagation()}>
-            <button onClick={handleCopyText} title="Copiar texto" className="p-1 bg-white hover:bg-gray-200 rounded shadow"><Copy size={16} /></button>
-            <button onClick={handleCopyImage} title="Copiar imagem" className="p-1 bg-white hover:bg-gray-200 rounded shadow"><ImageIcon size={16} /></button>
+            <TooltipButton onClick={handleCopyText} label="Copiar texto">
+              <Copy size={16} />
+            </TooltipButton>
+            <TooltipButton onClick={handleCopyImage} label="Copiar imagem">
+              <ImageIcon size={16} />
+            </TooltipButton>
+            <TooltipButton onClick={handleDownloadImage} label="Baixar imagem">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            </TooltipButton>
           </div>
         </>
       )}
