@@ -3,7 +3,7 @@ import { TacticCardData } from './manual-content';
 export const comunicacaoTactics: TacticCardData[] = [
   // TÁTICAS LEVES
   {
-    title: "A multiplicação de canais de WhatsApp",
+title: "Crie mais um grupo",
     icon: "💬",
     subtitle: "Um novo projeto? Novo grupo!",
     level: "Tática Leve",
@@ -41,7 +41,7 @@ export const comunicacaoTactics: TacticCardData[] = [
     tags: ["#Comunicação", "#Email", "#AssuntoVago"]
   },
   {
-    title: "O loop de feedback por e-mail",
+title: "Agora vai!",
     icon: "🔄",
     subtitle: "Feedback v3.docx",
     level: "Tática Leve",
@@ -61,7 +61,7 @@ export const comunicacaoTactics: TacticCardData[] = [
   },
   // TÁTICAS DRASTICAS
   {
-    title: "O repositório de informações fantasma",
+title: "O repositório fantasma",
     icon: "👻",
     subtitle: "Drive da infoxicação",
     level: "Tática Drástica",

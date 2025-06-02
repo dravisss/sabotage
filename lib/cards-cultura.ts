@@ -23,7 +23,7 @@ export const culturaTactics: TacticCardData[] = [
     tags: ["#Cultura", "#OtimismoTóxico", "#Negação", "#Feedback"]
   },
   {
-    title: "A Campanha de Engajamento Unilateral",
+title: "Engajamento Unilateral",
     icon: "📢",
     subtitle: "Engaje-se! (mas só do meu jeito)",
     level: "Tática Leve",
@@ -43,7 +43,7 @@ export const culturaTactics: TacticCardData[] = [
     tags: ["#Cultura", "#Engajamento", "#TopDown", "#Alienação"]
   },
   {
-    title: "A Pesquisa de Clima Decorativa",
+title: "Pesquisa Decorativa",
     icon: "📊",
     subtitle: "Finja ouvir e arquive",
     level: "Tática Leve",
