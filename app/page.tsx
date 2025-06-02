@@ -1,13 +1,19 @@
 'use client';
 
+import { useState } from 'react';
+import IntroVideo from '@/components/IntroVideo';
 import { TypewriterText } from '@/components/TypewriterText';
 import HomeIntro from '@/components/HomeIntro';
 import ManualSectionsGallery from '@/components/ManualSectionsGallery';
 import NewsletterSignup from '@/components/NewsletterSignup';
 
 export default function HomePage() {
+  const [showMain, setShowMain] = useState(false);
   return (
-    <div className="relative min-h-screen bg-[#f5f5f0]">
+    <>
+      <IntroVideo onFinish={() => setShowMain(true)} />
+      {showMain && (
+        <div className="relative min-h-screen bg-[#f5f5f0]">
       <main className="max-w-7xl mx-auto p-4 md:p-6 lg:p-8 font-title">
         <h1 className="font-title text-5xl font-bold text-zinc-800 text-center font-mono mt-0 mb-1">
           <TypewriterText text="Manual de Sabotagem Corporativa" />
@@ -33,6 +39,8 @@ export default function HomePage() {
           </div>
         </div>
       </main>
-    </div>
+        </div>
+      )}
+    </>
   );
 }
