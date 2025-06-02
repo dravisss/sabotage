@@ -49,7 +49,8 @@ ${tactic.antidote || ''}
 
 Tags: ${tactic.tags?.join(', ')}
 `;
-    await navigator.clipboard.writeText(text);
+    const attributionText = "\n\n---\nCopiado de sabotagemcorporativa.org\nFeito com 💙 pela Target Teal";
+    await navigator.clipboard.writeText(text + attributionText);
   };
 
   const handleCopyImage = async (e: React.MouseEvent) => {
@@ -57,7 +58,51 @@ Tags: ${tactic.tags?.join(', ')}
     if (!cardRef.current) return;
     try {
       const dataUrl = await toPng(cardRef.current, { cacheBust: true, backgroundColor: '#ffffff' });
-      const response = await fetch(dataUrl);
+
+      const img = new Image();
+      img.src = dataUrl;
+      // Wait for the image to load before using its dimensions
+      await new Promise((resolve, reject) => {
+        img.onload = resolve;
+        img.onerror = reject;
+      });
+
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      if (!ctx) {
+        console.error('Failed to get canvas context');
+        return;
+      }
+
+      const paddingBottom = 45; // Increased padding for two lines of text
+      const attributionLine1 = "Copiado de sabotagemcorporativa.org";
+      const attributionLine2 = "Feito com 💙 pela Target Teal";
+      const fontSize = 14;
+      const lineHeight = fontSize * 1.3; // Adjusted line height
+
+      canvas.width = img.width;
+      canvas.height = img.height + paddingBottom;
+
+      // Fill background for the new space (important if original card has transparency or for consistency)
+      ctx.fillStyle = '#ffffff'; // Match the card's capture background
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Draw the original card image
+      ctx.drawImage(img, 0, 0);
+
+      // Prepare to draw text
+      ctx.fillStyle = '#222222'; // Darker grey for better readability
+      ctx.font = `${fontSize}px sans-serif`;
+      ctx.textAlign = 'center';
+
+      // Draw the first line of attribution
+      ctx.fillText(attributionLine1, canvas.width / 2, img.height + lineHeight);
+      // Draw the second line of attribution
+      ctx.fillText(attributionLine2, canvas.width / 2, img.height + lineHeight * 2);
+
+      // Get the new image with attribution
+      const finalDataUrl = canvas.toDataURL('image/png');
+      const response = await fetch(finalDataUrl);
       const blob = await response.blob();
       const item = new ClipboardItem({ 'image/png': blob });
       await navigator.clipboard.write([item]);
