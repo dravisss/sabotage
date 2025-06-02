@@ -4,6 +4,7 @@ import NewsletterSignupBlock from './NewsletterSignupBlock';
 import { TacticCard } from '@/components/TacticCard';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { notFound } from 'next/navigation';
+import SectionStoriesBlock from '@/components/SectionStoriesBlock';
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> { 
   // For Next.js to statically generate pages during build
@@ -72,6 +73,13 @@ async function ManualPage({ params }: ManualPageProps) {
 
       {/* Bloco de inscrição de newsletter */}
       <NewsletterSignupBlock />
+
+      {/* Bloco de causos */}
+      <SectionStoriesBlock
+        sectionId={slug}
+        sectionTitle={section.pageTitle}
+        sectionUrl={`https://sabotagemcorporativa.org/manual/${slug}`}
+      />
 
       {section.finalDisclaimer && (
          <Alert variant="destructive" className="bg-red-100 border-red-500 text-red-700 mt-12">
