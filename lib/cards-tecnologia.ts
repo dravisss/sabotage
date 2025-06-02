@@ -59,7 +59,7 @@ export const tecnologiaTactics: TacticCardData[] = [
     tags: ["#Tecnologia", "#FerramentaObscura", "#AdoçãoForçada"]
   },
   {
-    title: "A senha super segura (e esquecida)",
+title: "A senha super segura",
     icon: "🔑",
     subtitle: "Políticas de senha impossíveis, post-its inevitáveis.",
     level: "Tática Leve",
