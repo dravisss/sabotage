@@ -35,7 +35,7 @@ export default function NewsletterModal() {
           aria-label="Fechar"
         >×</button>
         <h2 className="text-xl font-bold text-red-700 mb-2 font-title">Vai sair sem seu kit de sabotagem?</h2>
-        <p className="mb-4 text-zinc-700">Cadastre-se e receba nossos melhores materiais, livros e táticas exclusivas para agentes de mudança.</p>
+<p className="mb-4 text-zinc-700">Temos mais de 200 artigos publicados, livros e metodologias para ajudar você a superar as disfunções corporativas.</p>
         <NewsletterSignup />
       </div>
     </div>

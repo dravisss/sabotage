@@ -251,14 +251,15 @@ Tags: ${tactic.tags?.join(', ')}
               </div>
             )}
           </CardContent>
-          <div className="absolute bottom-2 right-2 flex gap-2" onClick={e => e.stopPropagation()}>
+<div className="absolute bottom-2 right-[12px] flex gap-2" onClick={(e: React.MouseEvent) => e.stopPropagation()}>
+            {/* Ajuste visual: gap maior da borda direita */}
             <TooltipButton onClick={handleCopyText} label="Copiar texto">
               <Copy size={16} />
             </TooltipButton>
             <TooltipButton onClick={handleCopyImage} label="Copiar imagem">
               <ImageIcon size={16} />
             </TooltipButton>
-            <TooltipButton onClick={handleDownloadImage} label="Baixar imagem">
+<TooltipButton onClick={handleDownloadImage} label="Baixar imagem">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             </TooltipButton>
           </div>
