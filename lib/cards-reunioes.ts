@@ -24,7 +24,7 @@ export const reunioesTactics: TacticCardData[] = [
   {
     title: "Fica pra Próxima",
     icon: "⏭️",
-subtitle: "Reunião para marcar a próxima reunião. O ciclo infinito da indecisão.",
+    subtitle: "Reunião para marcar a próxima reunião. O ciclo infinito da indecisão.",
     level: "Tática Leve",
     damageLevel: 2,
     dangerTags: ["Procrastinação", "ReuniãoInfinita"],
@@ -61,7 +61,7 @@ subtitle: "Reunião para marcar a próxima reunião. O ciclo infinito da indecis
     tags: ["#Reuniões", "#BloqueioPessoal", "#Decisão"]
   },
   {
-title: "Consenso Líquido",
+    title: "Consenso Líquido",
     icon: "🌊",
     subtitle: "Consenso para tudo. A decisão que é de todos e de ninguém.",
     level: "Tática Drástica",
@@ -216,5 +216,67 @@ title: "Consenso Líquido",
     ],
     antidote: "Questione coletivamente o valor de novos comitês e defenda a delegação de autoridade para o grupo original sempre que possível. Permita revisão dos fluxos de decisão e elimine etapas redundantes.",
     tags: ["#Reuniões", "#BurocraciaExtrema", "#EngarrafamentoDeDecisões", "#GovernançaExcessiva"]
+  },
+  {
+    title: "Envenene os Acordos",
+    icon: "🕷️",
+    subtitle: "Destrustabilize acordos em grupo, criando insegurança sobre compromissos prévios.",
+    level: "Tática Drástica",
+    damageLevel: 5,
+    dangerTags: ["Insegurança", "Dúvidas"],
+    modusOperandi: [
+      "Pergunte se aquela reunião semanal acordada há tempos vai mesmo acontecer. Estimule indiretamente outras pessoas a também fazerem o mesmo.",
+      "Pergunte “como vamos tratar isso?” (o plural é importante) mesmo sabendo que é de responsabilidade de outra pessoa ou que é algo que poderia ser feito individualmente. Faça essa pergunta várias vezes sobre o mesmo tema, mas de modos diferentes em situações e grupos também diferentes.",
+      "Sempre que alguém tentar esclarecer ou escrever um combinado, levante preocupações vagas que sugerem existir possíveis desdobramentos que ferem a segurança financeira ou a hierarquia. Por ex. “Parece bacana, só precisamos ver melhor a questão do impacto financeiro e garantir que a alta liderança não se sinta exposta”."
+    ],
+    effects: [
+      "Desorganização e desmobilização causada pela falta de confiança nos acordos de trabalho",
+      "Lentidão derivada da tentativa de combinar coisas entre muitas pessoas",
+      "Exaustão por não compreender como avançar nem com pequenas resoluções"
+    ],
+    antidote: "Não deixe as falas vagas e genéricas prosperarem. Parafraseie até entender qual a intenção de cada fala. Responsabilize as pessoas por suas falas. Reforce o poder do que foi combinado explicitamente e se o combinado precisar mudar, mude o que está escrito. Trate preocupações e desejos sem acionáveis como desabafos e sonhos individuais, nunca como pautas ou propostas para deliberação coletiva.",
+    tags: ["#Reuniões", "#Acordos", "#Insegurança"]
+  },
+  {
+    title: "Fióti de Reunião",
+    icon: "🎭",
+    subtitle: "Reunião preparatória falsa que dispersa responsabilidade e gera confusão.",
+    level: "Tática Leve",
+    damageLevel: 2,
+    dangerTags: ["Pretexto", "Confusão"],
+    modusOperandi: [
+      "Agende uma reunião preparatória sobre qualquer pauta relevante sob o pretexto de estar preparando algo (pessoas, materiais, informações) para uma reunião mais importante.",
+      "Convoque pessoas capazes de dar bastante pitaco, mas que não possuem responsabilidade ou autoridade alguma sobre o tema",
+      "Deixe acidentalmente de fora pessoas que já possuem responsabilidade sobre o tema ou que poderiam resolver algo de fato",
+      "Introduza falas ambíguas durante a reunião que façam as pessoas acreditarem que são parte de alguma iniciativa estratégica da companhia e que, essa iniciativa, depende delas individualmente",
+      "Deixe subentendido, nunca por escrito, que essas pessoas precisam preparar coisas para a tal reunião mais importante que vai acontecer em breve (mesmo que isso não seja verdade)."
+    ],
+    effects: [
+      "Confusão sobre quem é responsável pelo quê",
+      "Desconfiança e especulação sobre o porquê algumas não foram convidadas para a reunião prévia. Será que vão ser demitidas? Será que não gostam delas? Será que algo secreto vai mudar ou acontecer?",
+      "Desmotivação ao descobrir que seu trabalho nunca é usado para nada"
+    ],
+    antidote: "Não crie pré ou pós reunião. Não convoque ou participe de reuniões que se propõem a decidir coisas sem as pessoas que detêm autoridade para fazer isso. Não assume e nem incentive compromissos desconectados dos papéis que as pessoas já possuem. Em vez de realizar reuniões preparatórias para outras reuniões mais importantes, deixe que as pessoas que possuem alguma expectativa para as reuniões direcionem isso a quem já possui alguma responsabilidade relacionada ao tema.",
+    tags: ["#Reuniões", "#Pretexto", "#Confusão"]
+  },
+  {
+    title: "Combinados de Gaveta",
+    icon: "🗄️",
+    subtitle: "Esquive-se de registros formais e deixe acordos guardados em locais obscuros.",
+    level: "Tática Leve",
+    damageLevel: 2,
+    dangerTags: ["Pretexto", "Informalidade"],
+    modusOperandi: [
+      "Não registre nenhum combinado ou expectativa, apenas converse sobre eles e pergunte se todos estão de acordo.",
+      "Se tiver que registrar algo, registre as expectativas das pessoas (responsabilidades, processos, rituais, restrições e outros acordos) nos lugares mais cômodos e esquecíveis possíveis tais como: ata via email, msgs de whatsapp, flip-charts, post-its na sala de reunião, chat do zoom ou teams, DMs ou canais de slack.",
+      "Não detalhe nada. Se alguém insistir nisso diga apenas “gente, vamos seguir em frente? temos muita coisa importante pra discutir ainda” ou comece a responder msgs no celular."
+    ],
+    effects: [
+      "Preguiça de explicitar acordos porque não tem valor algum",
+      "Cinismo em relação a importância de coordenar o trabalho através de acordos em vez de hierarquia",
+      "Resistência em enfrentar o desconforto e inércia de detalhar expectativas"
+    ],
+    antidote: "Trabalhe com um único repositório de acordos comum, organizado e acessível a todo o grupo afetado. Evite espaços cujos fluxo de mensagem podem diluir a atenção demais como grupos de whatsapp, assim como espaços ou ferramentas cujo uso é alienígena a maioria das pessoas como um software que somente o hacker do grupo sabe usar.",
+    tags: ["#Reuniões", "#CombinadosGaveta", "#Informalidade"]
   }
 ];

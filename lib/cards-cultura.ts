@@ -83,7 +83,7 @@ export const culturaTactics: TacticCardData[] = [
     tags: ["#Cultura", "#Feedback", "#Reconhecimento", "#PsicologiaDoMedo"]
   },
   {
-    title: "guerra das cadeiras",
+title: "Guerra das cadeiras",
     icon: "💺",
     subtitle: "Sobreviva à guerra das cadeiras",
     level: "Tática Leve",
@@ -103,7 +103,7 @@ export const culturaTactics: TacticCardData[] = [
     tags: ["#Cultura", "#Escassez", "#Competição", "#GestãoColetiva"]
   },
   {
-    title: "burnout premium",
+title: "Burnout premium",
     icon: "⏰",
     subtitle: "Quem sai cedo não é comprometido",
     level: "Tática Leve",
@@ -141,6 +141,55 @@ export const culturaTactics: TacticCardData[] = [
     ],
     antidote: "Estabeleça que toda atividade de integração deve ser proposta e ajustada coletivamente, com participação sempre voluntária. Decisões só avançam se nenhum participante levantar objeção relevante, respeitando limites e interesses diversos.",
     tags: ["#Cultura", "#Integração", "#Consentimento", "#Autogestão"]
+  },
+
+  {
+    title: "Do grego “Strategía”",
+    icon: "🧠",
+    subtitle: "Reúna um petit comitê de pessoas estratégicas, de preferência fora do escritório para dar ares de algo mais importante do que é de fato",
+    level: "Tática Drástica",
+    damageLevel: 5,
+    dangerTags: ["EstratégiaSuperficial", "AbstraçãoExcessiva"],
+    modusOperandi: [
+      "Reúna um petit comitê de pessoas estratégicas, de preferência fora do escritório para dar ares de algo mais importante do que é de fato",
+      "Introduza um ou mais frameworks de alguma consultoria ou livro de autoajuda organizacional para conferir autoridade ao trabalho",
+      "Diga a palavra “propósito” a cada cinco palavras ditas",
+      "Mantenha a conversa num nível alto de abstração: missão, visão, valores, arenas de competição, must-win-battles, BHAGs, moonshots, etc",
+      "Não faça renúncias. Não discuta implicações práticas das escolhas desejadas. Não aprofunde como materializar nada. Apenas sonhe os próximos 5 anos.",
+      "Responsabilize a liderança por cascatear o que foi produzido. Mesmo que seja nada. Estabeleça prazos para isso ser realizado.",
+      "Peça ao RH para registrar tudo e fazer o tracking disso. Juntamente com qualquer outro time como Escritório de Projeto; Governança; Change Management etc. Cada um do seu jeito."
+    ],
+    effects: [
+      "Sensação superficial de dever cumprido e posterior insônia",
+      "Bate cabeça da peãozada que não faz a menor ideia do que precisa fazer",
+      "Ansiedade generalizada por algo esperado que ninguém sabe direito o que é ou como será entregue",
+      "Burnout devido ao excesso de trabalho que só aumenta com novas prioridades, metas contraditórias e cobrança de vários lugares"
+    ],
+    antidote: "Não trate estratégia como um evento glamouroso da casta dos nobres, mas como um processo regular e participativo. Entenda quais são as tensões vividas no dia a dia da organização através de diferentes perspectivas: área, papel, tempo de casa e outras demografias. Traduza essas tensões em grandes desafios da organização. Escolha caminhos para tratar os principais desafios partindo de hipóteses que podem ser testadas. Abra um espaço de diálogo para que pessoas de diferentes estratos organizacionais explicitem as implicações práticas e renúncias necessárias para seguir nesses caminhos. Verifique regularmente que ajustes de rota estão sendo requeridos.",
+    tags: ["#Cultura", "#Strategia", "#Abstracao"]
+  },
+  {
+    title: "Treinamento da Firma",
+    icon: "🎓",
+    subtitle: "Assuma que um determinado time tem algum problema genérico e resolva tudo com um curso motivacional externo",
+    level: "Tática Moderada",
+    damageLevel: 3,
+    dangerTags: ["TreinamentoMotivacional", "PerdaDeTempo"],
+    modusOperandi: [
+      "Assuma que um determinado time tem algum problema genérico como: falta de proatividade; trabalha em silos; não se compromete com o resultado; é infantil e não lida bem com feedbacks; não sabe tirar o melhor de suas pessoas; não tem fit com a nossa cultura; não está preparado para o que vem por aí…",
+      "Contrate um treinamento externo que ensine essas pessoas a fazer o que devem fazer",
+      "Exija que todas essas pessoas participem desse treinamento, mesmo se for durante o período mais tenso do ano",
+      "Peça que as pessoas dêem uma nota de 1 a 5 ao treinamento, mas nunca pergunte sobre o diagnóstico que originou o treinamento",
+      "Considere a realização desse treinamento como entregável de algum plano de ação para alguma pesquisa ou mapeamento realizados previamente. Não importa o tema."
+    ],
+    effects: [
+      "Nada muda, apesar das plumas e paetês",
+      "Muitas atualizações dos campos “Educação” nos perfis do linkedIn",
+      "Sobrecarga pelo trabalho que fica pendente enquanto rola o treinamento da firma",
+      "Desânimo em identificar que a organização cobra o indivíduo de mudar uma situação que depende mais das estruturas do que de comportamentos"
+    ],
+    antidote: "Não realize treinamentos massivos. Principalmente aqueles que se propõem a resolver “problemas comportamentais”. Gaste mais tempo e dinheiro compreendendo as dificuldades que as pessoas têm ao realizar seus trabalhos. Assuma que as pessoas querem fazer um bom trabalho, mas precisam de condições adequadas para isso. Prefira iniciativas que valorizem os saberes e quereres das pessoas mais do que opiniões de especialistas externos ou gurus da liderança. Arrume os recursos e a coragem necessária para mexer nas estruturas organizacionais que fazem diferença nos resultados obtidos vs. esperados, em vez de tapar o sol com a peneira dos treinamentos motivacionais.",
+    tags: ["#Cultura", "#Treinamento", "#Desalinhamento"]
   },
 
   // TÁTICAS DRASTICAS
