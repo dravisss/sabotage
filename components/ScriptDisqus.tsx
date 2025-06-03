@@ -17,12 +17,22 @@ export default function ScriptDisqus({ shortname, url, identifier, title }: Scri
     if (disqusThread) disqusThread.innerHTML = "";
 
     // Define config global
-    (window as any).disqus_config = function () {
+    interface DisqusConfigThis {
+      page: {
+        url: string;
+        identifier: string;
+        title: string;
+      };
+      language: string;
+    }
+    (window as Window & { disqus_config?: () => void }).disqus_config = function (this: DisqusConfigThis) {
       this.page.url = url;
       this.page.identifier = identifier;
       this.page.title = title;
       this.language = "pt_BR";
     };
+
+
     // Cria script
     const d = document, s = d.createElement('script');
     s.src = `https://${shortname}.disqus.com/embed.js`;
