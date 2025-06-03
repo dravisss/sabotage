@@ -65,26 +65,7 @@ export const TacticCard: React.FC<TacticCardProps> = ({ tactic, isLocked, onRequ
     }
   };
 
-  // Keep original handleExpand if needed elsewhere, or rename handleCardClick to handleExpand
-  const handleExpand = handleCardClick; // Alias for simplicity if only one click action now
 
-  const originalHandleExpand = () => { // Renaming original for clarity if we need to differentiate
-    setExpanded((v) => !v);
-    if (!expanded) {
-      // Só conta se for a primeira vez que expande esse card
-      const clicked = JSON.parse(localStorage.getItem('tacticClicked') || '[]');
-      if (!clicked.includes(tactic.title)) {
-        const updated = [...clicked, tactic.title];
-        localStorage.setItem('tacticClicked', JSON.stringify(updated));
-        let clicks = Number(localStorage.getItem('tacticClicks') || 0);
-        clicks++;
-        localStorage.setItem('tacticClicks', clicks.toString());
-        if (clicks === 3) {
-          localStorage.setItem('showNewsletterModal', 'true');
-        }
-      }
-    }
-  };
 
   const handleCopyText = async (e: React.MouseEvent) => {
     e.stopPropagation();

@@ -111,6 +111,9 @@ export default function ManualPageClient({ section: initialSection, slug: initia
             onSuccess={() => {
               setHasUnlockedContent(true);
               setShowNewsletterModal(false);
+              if (typeof window !== 'undefined') {
+                localStorage.setItem('hasUnlockedPremiumContent', 'true');
+              }
             }}
           />
         )}

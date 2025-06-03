@@ -11,26 +11,60 @@ export async function generateStaticParams(): Promise<{ slug: string }[]> {
   }));
 }
 
-interface ManualPageProps {
-  params: { slug: string }; // Direct access to slug
-}
+type Props = {
+  params: Promise<{ slug: string }>; // Expect params to be a Promise
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>; // If present, searchParams is also a Promise
+};
 
 // This is the main Server Component for the page
-export default async function ManualPage({ params }: ManualPageProps) {
+export default async function ManualPage({ params: paramsPromise }: Props) { 
+  const params = await paramsPromise; // Await the promise to get the actual params object
   const slug = params.slug;
-  const section = getSectionData(slug);
+  const originalSection = getSectionData(slug); // Get the original section data
 
-  if (!section) {
+  if (!originalSection) {
     notFound(); 
+  }
+
+  // Prepare section data for the client component (ensure it's serializable)
+  const sectionForClient = { ...originalSection };
+
+  // Nullify Icon properties to ensure serializability for any disclaimers/finalDisclaimers
+  if (sectionForClient.disclaimer && typeof sectionForClient.disclaimer.Icon === 'function') {
+    sectionForClient.disclaimer = { ...sectionForClient.disclaimer, Icon: undefined };
+  }
+
+  const FinalDisclaimerIconComponent = originalSection.finalDisclaimer?.Icon;
+  if (sectionForClient.finalDisclaimer && typeof sectionForClient.finalDisclaimer.Icon === 'function') {
+    sectionForClient.finalDisclaimer = { ...sectionForClient.finalDisclaimer, Icon: undefined };
+  }
+
+  // If this is the 'encerramento' page, we'll render finalDisclaimer separately in this server component,
+  // so remove it from the data passed to the client component to avoid double rendering by ManualPageClient.
+  if (slug === "encerramento") {
+    sectionForClient.finalDisclaimer = undefined;
   }
 
   return (
     <>
-      {/* Pass section data and slug to the client component */}
-      <ManualPageClient section={section} slug={slug} />
+      {/* ManualPageClient receives section data that is guaranteed to be serializable */}
+      <ManualPageClient section={sectionForClient} slug={slug} />
       
-      {/* SectionNavigation can be rendered here if it doesn't need client state from ManualPageClient */}
-      <SectionContentWrapper> {/* If navigation is outside the main article but within the wrapper */}
+      {/* Render the finalDisclaimer specifically for the 'encerramento' page here in the Server Component */}
+      {slug === "encerramento" && originalSection.finalDisclaimer && FinalDisclaimerIconComponent && (
+        <SectionContentWrapper>
+          <div className="mt-12 p-6 bg-yellow-50 border border-yellow-300 rounded-lg shadow-md text-sm">
+            <h3 className="text-lg font-semibold text-yellow-800 flex items-center">
+              <FinalDisclaimerIconComponent className="w-5 h-5 mr-2 text-yellow-700" />
+              {originalSection.finalDisclaimer.title}
+            </h3>
+            <div className="mt-2 text-yellow-700 prose prose-sm prose-yellow" dangerouslySetInnerHTML={{ __html: originalSection.finalDisclaimer.description }} />
+          </div>
+        </SectionContentWrapper>
+      )}
+      
+      {/* SectionNavigation can be rendered here */}
+      <SectionContentWrapper>
         <div className="flex flex-col items-center gap-4 mt-14 mb-8">
           <SectionNavigation currentSlug={slug} />
         </div>
