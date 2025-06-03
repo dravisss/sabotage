@@ -35,6 +35,7 @@ const shortname = "sabotagem-corporativa";
         </p>
       </div>
       <DiscussionEmbed
+        key={sectionId}
         shortname={shortname}
         config={{
           url: sectionUrl,
