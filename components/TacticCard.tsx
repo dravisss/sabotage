@@ -191,12 +191,12 @@ Tags: ${tactic.tags?.join(', ')}
         {tactic.icon && (
           <span className="text-4xl mr-2 select-none" aria-label="ícone da tática">{tactic.icon}</span>
         )}
-        <div className="flex-1 min-w-0">
+        <div className="flex-1 min-w-0 w-full">
           <div className="flex items-center gap-2">
-            <span className="font-title text-xl sm:text-2xl font-bold text-zinc-800 truncate">{tactic.title}</span>
+            <span className="font-title text-xl sm:text-2xl font-bold text-zinc-800 break-words whitespace-normal">{tactic.title}</span>
             <span className={`px-2 py-1 rounded-full text-xs font-bold uppercase shadow ${tactic.level.includes('Drástica') ? 'bg-red-200 text-red-800' : 'bg-red-100 text-red-700'}`}>{tactic.level}</span>
           </div>
-          <div className="text-zinc-500 italic text-base truncate font-title">{tactic.subtitle}</div>
+          <div className="text-zinc-500 italic text-base font-title break-words whitespace-normal">{tactic.subtitle}</div>
           <div className="flex items-center gap-2 mt-1">
             <span className="text-xs text-zinc-500 font-title">Dano à Produtividade:</span>
             {Array.from({ length: tactic.damageLevel || 1 }).map((_, i) => (
