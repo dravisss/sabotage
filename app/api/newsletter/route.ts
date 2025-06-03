@@ -33,11 +33,18 @@ export async function POST(req: NextRequest) {
     });
     const contactData = await acRes.json();
     if (!acRes.ok || !contactData.contact || !contactData.contact.id) {
-      // Tenta extrair mensagem de erro legível
-      const errorMsg = contactData?.errors?.[0]?.title || JSON.stringify(contactData);
-      return NextResponse.json({ error: errorMsg }, { status: 400 });
+      // Se for erro de duplicidade (contato já existe), segue normalmente
+      const duplicate = contactData?.errors?.[0]?.code === 'duplicate';
+      if (duplicate) {
+        // Busca o contactId do erro se disponível, ou simplesmente segue sem ele
+        // (ActiveCampaign normalmente retorna o contato existente em contactData.contact)
+      } else {
+        const errorMsg = contactData?.errors?.[0]?.title || JSON.stringify(contactData);
+        return NextResponse.json({ error: errorMsg }, { status: 400 });
+      }
     }
-    const contactId = contactData.contact.id;
+    const contactId = contactData.contact?.id;
+
 
     // 2. Associa o contato à lista 11
     const listRes = await fetch('https://targetteal.api-us1.com/api/3/contactLists', {
