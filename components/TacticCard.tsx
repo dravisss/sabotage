@@ -197,10 +197,10 @@ Tags: ${tactic.tags?.join(', ')}
           </div>
           <div className="text-zinc-500 italic text-base font-title break-words whitespace-normal">{tactic.subtitle}</div>
           {isLocked && (
-            <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/10 backdrop-blur-sm z-10 rounded-2xl">
-              <Lock size={48} className="text-zinc-700 mb-2" />
-              <span className="text-zinc-700 font-semibold text-sm">Conteúdo Bloqueado</span>
-              <span className="text-zinc-600 text-xs">Inscreva-se para liberar</span>
+            <div className="absolute inset-0 flex flex-col items-center justify-center bg-white/0 backdrop-blur-[2px] z-10 rounded-2xl transition-all duration-300">
+              <Lock size={48} className="text-zinc-700 mb-2 opacity-0" />
+              <span className="text-zinc-700 font-semibold text-sm opacity-0">Conteúdo Bloqueado</span>
+              <span className="text-zinc-600 text-xs opacity-0">Inscreva-se para liberar</span>
             </div>
           )}
           <div className="flex items-center gap-2 mt-1">
