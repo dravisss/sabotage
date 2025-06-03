@@ -17,6 +17,7 @@ interface ManualPageClientProps {
 export default function ManualPageClient({ section: initialSection, slug: initialSlug }: ManualPageClientProps) {
   const [showNewsletterModal, setShowNewsletterModal] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [unlocked, setUnlocked] = useState(false);
 
   useEffect(() => {
     let unsubscribe: (() => void) | undefined;
@@ -81,7 +82,7 @@ export default function ManualPageClient({ section: initialSection, slug: initia
               <TacticCard
                 key={idx}
                 tactic={tactic}
-                isLocked={!isAuthenticated && idx > 2}
+                isLocked={!isAuthenticated && !unlocked && idx > 2}
                 onRequestUnlock={() => setShowNewsletterModal(true)}
               />
             ))}
@@ -121,6 +122,7 @@ export default function ManualPageClient({ section: initialSection, slug: initia
             onClose={() => setShowNewsletterModal(false)}
             onSuccess={() => {
               setShowNewsletterModal(false);
+              setUnlocked(true);
             }}
           />
         )}

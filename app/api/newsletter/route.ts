@@ -93,25 +93,6 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: errorMsg }, { status: 400 });
     }
 
-    // 3. Envia magic link do Supabase
-    try {
-      const magicLinkPayload = { email };
-      console.log('NEWSLETTER: Payload enviado para magic link:', magicLinkPayload);
-      const magicLinkRes = await fetch(process.env.NEXT_PUBLIC_SITE_URL + '/api/supa-magic-link', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(magicLinkPayload)
-      });
-      const magicLinkData = await magicLinkRes.json();
-      console.log('NEWSLETTER: Resposta magic link:', { status: magicLinkRes.status, ok: magicLinkRes.ok, magicLinkData });
-      if (!magicLinkRes.ok) {
-        // Não bloqueia o fluxo, apenas loga o erro
-        console.error('Erro ao enviar magic link:', magicLinkData.error);
-      }
-    } catch (e) {
-      // Não bloqueia o fluxo em caso de erro
-      console.error('Erro ao conectar com endpoint de magic link:', e);
-    }
     console.log('NEWSLETTER: Finalizando fluxo com sucesso.');
     return NextResponse.json({ success: true });
   } catch {

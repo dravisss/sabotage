@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-export async function POST(req: NextRequest) {
+// Endpoint desativado. Não utilizado.
+export async function POST() {
+  return new Response('Not found', { status: 404 });
+}
   const { email } = await req.json();
   if (!email || typeof email !== 'string') {
     return NextResponse.json({ error: 'Email inválido' }, { status: 400 });

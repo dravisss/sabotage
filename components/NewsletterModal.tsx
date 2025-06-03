@@ -35,7 +35,9 @@ export default function NewsletterModal({ isOpen, onClose, onSuccess }: Newslett
             Desbloqueie Mais Táticas!
           </h2>
           <p className="mb-6 text-zinc-600 text-sm sm:text-base">
-            Insira seu e-mail para liberar todas as táticas de sabotagem e receber conteúdos exclusivos sobre design organizacional e como transformar sua empresa.
+            Insira seu nome e e-mail para liberar todas as táticas de sabotagem.<br />
+            <b>Se você já se inscreveu antes, é só colocar seu e-mail de novo para fazer login e liberar o conteúdo.</b><br />
+            Não precisa de senha nem confirmação por e-mail.
           </p>
         </div>
         {/* Pass the handleSuccess function to NewsletterSignup */}

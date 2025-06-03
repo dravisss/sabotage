@@ -33,6 +33,13 @@ export default function NewsletterSignup({ onSuccess }: NewsletterSignupProps) {
         if (onSuccess) {
           onSuccess();
         }
+      } else if (data.error && data.error.includes('duplicate')) {
+        // Se já está cadastrado, liberar igual
+        setSuccess(true);
+        setEmail('');
+        if (onSuccess) {
+          onSuccess();
+        }
       } else {
         setError(data.error || 'Erro ao cadastrar. Tente novamente.');
       }
@@ -45,8 +52,8 @@ export default function NewsletterSignup({ onSuccess }: NewsletterSignupProps) {
 
   return (
     <div className="mt-12 p-6 bg-zinc-50 border border-zinc-200 rounded-lg shadow max-w-xl mx-auto">
-      <h2 className="font-title text-2xl font-bold mb-2 text-red-700">Clube dos Agentes de Mudança</h2>
-      <p className="text-zinc-700 mb-4">Entre para a newsletter da Target Teal e ganhe acesso imediato aos nossos livros, artigos e metodologias para transformar organizações.</p>
+      <h2 className="font-title text-2xl font-bold mb-2 text-red-700">Acesso imediato ao conteúdo</h2>
+      <p className="text-zinc-700 mb-4">Digite seu e-mail para liberar o conteúdo premium. Se já está cadastrado, só precisamos do seu e-mail novamente para liberar o acesso. Não há verificação ou senha.</p>
       <form className="flex flex-col gap-3" onSubmit={handleSubmit} autoComplete="off">
         {/* Honeypot field (hidden from users, visible to bots) */}
         <div style={{ display: 'none' }} aria-hidden="true">
