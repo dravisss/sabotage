@@ -6,6 +6,20 @@ interface NewsletterSignupProps {
 }
 
 export default function NewsletterSignup({ onSuccess }: NewsletterSignupProps) {
+  const [alreadyUnlocked, setAlreadyUnlocked] = React.useState(false);
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+    if (typeof window !== 'undefined') {
+      const unlocked = localStorage.getItem('hasUnlockedPremiumContent');
+      if (unlocked === 'true') {
+        setAlreadyUnlocked(true);
+      }
+    }
+  }, []);
+
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [consent, setConsent] = useState(false);
@@ -50,10 +64,14 @@ export default function NewsletterSignup({ onSuccess }: NewsletterSignupProps) {
     }
   };
 
+  if (!mounted || alreadyUnlocked) return null;
   return (
     <div className="mt-12 p-6 bg-zinc-50 border border-zinc-200 rounded-lg shadow max-w-xl mx-auto">
-      <h2 className="font-title text-2xl font-bold mb-2 text-red-700">Acesso imediato ao conteúdo</h2>
-      <p className="text-zinc-700 mb-4">Digite seu e-mail para liberar o conteúdo premium. Se já está cadastrado, só precisamos do seu e-mail novamente para liberar o acesso. Não há verificação ou senha.</p>
+      <h2 className="font-title text-2xl font-bold mb-2 text-red-700">Clube dos Agentes de Mudança</h2>
+      <p className="text-zinc-700 mb-4">
+        Entre para o <b>Clube dos Agentes de Mudança</b> da Target Teal e tenha acesso imediato aos nossos livros, artigos e metodologias e uma comunidade que ajuda você a transformar organizações.<br />
+        <b>Já faz parte? Só colocar seu e-mail novamente para liberar o acesso!</b> 
+      </p>
       <form className="flex flex-col gap-3" onSubmit={handleSubmit} autoComplete="off">
         {/* Honeypot field (hidden from users, visible to bots) */}
         <div style={{ display: 'none' }} aria-hidden="true">
@@ -69,6 +87,7 @@ export default function NewsletterSignup({ onSuccess }: NewsletterSignupProps) {
             />
           </label>
         </div>
+        {/* resto do formulário permanece igual */}
         <input
           type="text"
           required
