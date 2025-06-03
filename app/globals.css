@@ -75,7 +75,6 @@
   background: transparent !important;
 }
 #disqus_thread * {
-
   color: #222 !important;
   background: #fff !important;
   --tw-prose-links: #111111 !important;
@@ -84,33 +83,6 @@
   --color-link: #111111 !important;
   --color-primary: #111111 !important;
   --color-accent: #111111 !important;
-}
-
-/* Hack para esconder a barra inferior do Disqus */
-#disqus_thread ul.dsq-brlink,
-#disqus_thread .dsq-brlink,
-#disqus_thread .dsq-powered-by,
-#disqus_thread [href*="disqus.com"],
-#disqus_thread [href*="privacy"] {
-  display: none !important;
-}
-#disqus_thread > ul:last-child,
-#disqus_thread > div:last-child {
-  display: none !important;
-}
-
-/* Esconde tooltips e botões com texto Disqus */
-#disqus_thread [title*="Disqus"],
-#disqus_thread [aria-label*="Disqus"],
-#disqus_thread button[title*="Disqus"],
-#disqus_thread span[title*="Disqus"],
-#disqus_thread div[title*="Disqus"],
-#disqus_thread [data-title*="Disqus"] {
-  display: none !important;
-}
-#disqus_thread span, #disqus_thread div, #disqus_thread button {
-  /* Esconde tooltips Disqus por texto */
-  /* Se o conteúdo for exatamente 'Disqus', esconde */
 }
 
 
