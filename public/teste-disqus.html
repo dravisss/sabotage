@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Teste Disqus</title>
+  </head>
+  <body>
+    <div id="disqus_thread"></div>
+    <script>
+      var disqus_config = function () {
+        this.page.url = window.location.href;
+        this.page.identifier = "teste-disqus";
+      };
+      (function() {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://sabotagem-corporativa.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+      })();
+    </script>
+    <noscript>Por favor, habilite o JavaScript para ver os comentários do Disqus.</noscript>
+  </body>
+</html>
