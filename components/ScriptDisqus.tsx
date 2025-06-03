@@ -17,7 +17,7 @@ export default function ScriptDisqus({ shortname, url, identifier, title }: Scri
     if (disqusThread) disqusThread.innerHTML = "";
 
     // Define config global
-    window.disqus_config = function () {
+    (window as any).disqus_config = function () {
       this.page.url = url;
       this.page.identifier = identifier;
       this.page.title = title;
