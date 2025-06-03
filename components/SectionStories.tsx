@@ -9,9 +9,15 @@ interface SectionStoriesProps {
 }
 
 export default function SectionStories({ sectionId, sectionTitle, sectionUrl }: SectionStoriesProps) {
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      console.log('[SectionStories] DEBUG', { sectionUrl, sectionId, sectionTitle });
+    }
+  }, [sectionUrl, sectionId, sectionTitle]);
+
   const [disqusLoaded, setDisqusLoaded] = useState(false);
   // Para testar, troque para 'example'
-const shortname = "sabotagem-corporativa";
+  const shortname = "sabotagem-corporativa";
 
   useEffect(() => {
     // Detecta se o Disqus foi injetado
@@ -42,7 +48,7 @@ const shortname = "sabotagem-corporativa";
         <span>sectionId: <code>{sectionId}</code></span><br />
         <span>sectionTitle: <code>{sectionTitle}</code></span>
       </div>
-      {typeof window !== 'undefined' && console.log('[SectionStories] DEBUG', { sectionUrl, sectionId, sectionTitle })}
+
 
       {/* Embed puro do Disqus */}
       <ScriptDisqus
