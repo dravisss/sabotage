@@ -23,11 +23,11 @@ export default function ManualPageClient({ section: initialSection, slug: initia
     import('@/lib/supabaseClient').then(({ supabase }) => {
       supabase.auth.getSession().then(({ data: { session } }) => {
         setIsAuthenticated(!!session);
-        setShowNewsletterModal(!session);
+        // Removido: não abrir modal automaticamente ao carregar seção
       });
       const { data: listener } = supabase.auth.onAuthStateChange((_event: string, session: import('@supabase/supabase-js').Session | null) => {
         setIsAuthenticated(!!session);
-        setShowNewsletterModal(!session);
+        // Removido: não abrir modal automaticamente ao mudar sessão
       });
       unsubscribe = () => listener.subscription.unsubscribe();
     });
