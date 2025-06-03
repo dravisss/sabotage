@@ -75,6 +75,7 @@
   background: transparent !important;
 }
 #disqus_thread * {
+
   color: #222 !important;
   background: #fff !important;
   --tw-prose-links: #111111 !important;
@@ -85,6 +86,18 @@
   --color-accent: #111111 !important;
 }
 
+/* Hack para esconder a barra inferior do Disqus */
+#disqus_thread ul.dsq-brlink,
+#disqus_thread .dsq-brlink,
+#disqus_thread .dsq-powered-by,
+#disqus_thread [href*="disqus.com"],
+#disqus_thread [href*="privacy"] {
+  display: none !important;
+}
+#disqus_thread > ul:last-child,
+#disqus_thread > div:last-child {
+  display: none !important;
+}
 
 :root {
   --radius: 0.625rem;
