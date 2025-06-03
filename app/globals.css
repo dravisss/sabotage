@@ -58,7 +58,23 @@
 }
 
 /* Força cor e background seguros no bloco do Disqus e seus filhos */
-#disqus_thread, #disqus_thread * {
+#disqus_thread {
+  border-radius: 1rem !important;
+  overflow: visible !important;
+  padding: 1.5rem 1rem !important;
+  background: #fff !important;
+  box-shadow: 0 2px 16px 0 #0001;
+  min-width: 0;
+}
+#disqus_thread iframe {
+  border-radius: 1rem !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  overflow: visible !important;
+  background: transparent !important;
+}
+#disqus_thread * {
   color: #222 !important;
   background: #fff !important;
   --tw-prose-links: #111111 !important;
