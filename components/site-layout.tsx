@@ -42,9 +42,9 @@ function SiteLayoutWithSidebarContext({ children }: { children: React.ReactNode 
         className="py-8 border-t border-zinc-300 bg-beige-100 w-full"
       >
         <div
-          className="flex flex-col items-center justify-center gap-2 px-4 max-w-[800px] mx-auto transition-all"
+          className="flex flex-col items-center justify-center gap-2 px-4 w-full max-w-[800px] mx-auto transition-all"
           style={{
-            paddingLeft: !isHome && !isCollapsed ? 280 : undefined,
+            paddingLeft: typeof window !== 'undefined' && window.innerWidth >= 768 && !isHome && !isCollapsed ? 280 : undefined,
           }}
         >
           <p className="text-center text-xs text-zinc-600 mb-2">Feito com <span role="img" aria-label="coração azul">💙</span> por <a href="https://targetteal.com" target="_blank" rel="noopener noreferrer" className="font-medium underline underline-offset-4 hover:text-blue-700">Target Teal</a></p>
