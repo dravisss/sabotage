@@ -29,18 +29,18 @@ export async function POST(req: NextRequest) {
       body: JSON.stringify(body)
     });
     const text = await mcpRes.text();
-    let mcpData: any;
+    let mcpData: Record<string, unknown>;
     try {
-      mcpData = JSON.parse(text);
+      mcpData = JSON.parse(text) as Record<string, unknown>;
     } catch {
       mcpData = { raw: text };
     }
     console.log('[MAGICLINK] Status:', mcpRes.status);
     console.log('[MAGICLINK] Response:', mcpData);
     if (!mcpRes.ok) {
-      return NextResponse.json({ error: mcpData.error || mcpData.msg || mcpData.message || 'Erro ao gerar magic link', debug: mcpData }, { status: 500 });
+      return NextResponse.json({ error: (mcpData.error as string) || (mcpData.msg as string) || (mcpData.message as string) || 'Erro ao gerar magic link', debug: mcpData }, { status: 500 });
     }
-    return NextResponse.json({ magicLink: mcpData.action_link || null });
+    return NextResponse.json({ magicLink: (mcpData.action_link as string) || null });
   } catch (e) {
     return NextResponse.json({ error: 'Erro ao conectar com MCP', debug: String(e) }, { status: 500 });
   }
