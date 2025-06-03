@@ -74,10 +74,46 @@ html, body {
   border-radius: 1rem !important;
   overflow: visible !important;
   padding: 1.5rem 1rem !important;
-  background: #fff !important;
-  box-shadow: 0 2px 16px 0 #0001;
+  background: #faf9f6 !important;
+  border: 2px solid #ffe066 !important;
+  box-shadow: 0 2px 16px 0 #ffe06622;
   min-width: 0;
 }
+#disqus_thread * {
+  color: #7c6f48 !important;
+  background: transparent !important;
+  --tw-prose-links: #ffe066 !important;
+  --tw-prose-invert-links: #ffe066 !important;
+  --color-anchor: #ffe066 !important;
+  --color-link: #ffe066 !important;
+  --color-primary: #ffe066 !important;
+  --color-accent: #ffe066 !important;
+}
+#disqus_thread a {
+  color: #b59f3b !important;
+  text-decoration: underline;
+}
+#disqus_thread a:hover {
+  color: #7c6f48 !important;
+  background: #ffe06633 !important;
+}
+#disqus_thread button, #disqus_thread input[type="submit"] {
+  background: #ffe066 !important;
+  color: #222 !important;
+  border-radius: 8px !important;
+  border: none !important;
+  font-weight: bold !important;
+  box-shadow: none !important;
+  transition: background 0.2s;
+}
+#disqus_thread button:hover, #disqus_thread input[type="submit"]:hover {
+  background: #ffdb4d !important;
+  color: #222 !important;
+}
+#disqus_thread hr {
+  border-color: #ffe066 !important;
+}
+
 #disqus_thread iframe {
   border-radius: 1rem !important;
   width: 100% !important;
