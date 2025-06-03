@@ -57,6 +57,19 @@
   /* Adicione outros nomes se encontrar no DevTools */
 }
 
+/* Força cor e background seguros no bloco do Disqus e seus filhos */
+#disqus_thread, #disqus_thread * {
+  color: #222 !important;
+  background: #fff !important;
+  --tw-prose-links: #111111 !important;
+  --tw-prose-invert-links: #111111 !important;
+  --color-anchor: #111111 !important;
+  --color-link: #111111 !important;
+  --color-primary: #111111 !important;
+  --color-accent: #111111 !important;
+}
+
+
 :root {
   --radius: 0.625rem;
   --background: #f5f5f0;
