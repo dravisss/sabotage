@@ -1,6 +1,6 @@
 "use client";
-import { DiscussionEmbed } from "disqus-react";
 import { useEffect, useState } from "react";
+import ScriptDisqus from "./ScriptDisqus";
 
 interface SectionStoriesProps {
   sectionId: string;
@@ -34,15 +34,13 @@ const shortname = "sabotagem-corporativa";
           Conte sua experiência nos comentários abaixo e ajude a mostrar que a vida corporativa é mesmo cheia de roteiros inacreditáveis. Sua história pode inspirar (ou alertar) outros agentes de mudança!
         </p>
       </div>
-      <DiscussionEmbed
-        key={sectionId}
+      <div id="disqus_thread"></div>
+      {/* Embed puro do Disqus */}
+      <ScriptDisqus
         shortname={shortname}
-        config={{
-          url: sectionUrl,
-          identifier: sectionId,
-          title: sectionTitle,
-          language: "pt_BR"
-        }}
+        url={sectionUrl}
+        identifier={sectionId}
+        title={sectionTitle}
       />
       {!disqusLoaded && (
         <div className="mt-4 text-center text-sm text-zinc-500">
