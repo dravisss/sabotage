@@ -16,13 +16,24 @@ interface ManualPageClientProps {
 
 export default function ManualPageClient({ section: initialSection, slug: initialSlug }: ManualPageClientProps) {
   const [showNewsletterModal, setShowNewsletterModal] = useState(false);
-  const [hasUnlockedContent, setHasUnlockedContent] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const unlocked = localStorage.getItem('hasUnlockedPremiumContent') === 'true';
-      setHasUnlockedContent(unlocked);
-    }
+    let unsubscribe: (() => void) | undefined;
+    import('@/lib/supabaseClient').then(({ supabase }) => {
+      supabase.auth.getSession().then(({ data: { session } }) => {
+        setIsAuthenticated(!!session);
+        setShowNewsletterModal(!session);
+      });
+      const { data: listener } = supabase.auth.onAuthStateChange((_event: string, session: any) => {
+        setIsAuthenticated(!!session);
+        setShowNewsletterModal(!session);
+      });
+      unsubscribe = () => listener.subscription.unsubscribe();
+    });
+    return () => {
+      if (unsubscribe) unsubscribe();
+    };
   }, []);
 
   if (!initialSection || !initialSlug) {
@@ -70,7 +81,7 @@ export default function ManualPageClient({ section: initialSection, slug: initia
               <TacticCard
                 key={idx}
                 tactic={tactic}
-                isLocked={!hasUnlockedContent && idx > 2}
+                isLocked={!isAuthenticated && idx > 2}
                 onRequestUnlock={() => setShowNewsletterModal(true)}
               />
             ))}

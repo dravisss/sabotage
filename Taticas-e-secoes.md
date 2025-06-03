@@ -105,7 +105,6 @@ Aprenda a convocar, conduzir e concluir (ou nunca concluir) encontros que entrar
 
 ---
 
-(As demais táticas de reuniões e todas as táticas das outras seções serão incluídas, cada uma como subtópico de sua seção, seguindo este padrão 100% markdown, sem HTML.)
 
 ---
 
@@ -142,18 +141,20 @@ Domine a arte de transformar mensagens simples em épicos burocráticos e inform
 - Aumento da dispersão e do cansaço digital.
 - Mensagens relevantes se perdem em múltiplos grupos.
 
-**Antídoto:** Consolide grupos semelhantes e pactue critérios claros para a criação de novos canais. Permita revisão periódica da estrutura de grupos e incentive fusões sempre que possível.
+**Antídoto:** Defina previamente quais decisões exigem consenso e quais podem ser tomadas por delegação. Torne explícita a responsabilidade de cada pessoa ou grupo e revise coletivamente os fluxos decisórios.
 
-**Tags:** #Comunicação, #WhatsApp, #Fragmentação
-
----
-
-(As demais táticas de comunicação e todas as táticas das outras seções serão incluídas, cada uma como subtópico de sua seção, seguindo este padrão 100% markdown, sem HTML.)
+**Tags:** #Reuniões, #Consenso, #Responsabilidade
 
 ---
 
-## 3. Processos & Burocracia
+#### Critério infinito
+**Nível:** Tática Drástica
 
+**Dano:** 4
+
+**Tags de perigo:** ComplexidadeExcessiva, DecisãoParalisada
+
+**Resumo:** Matriz de decisão com 50 critérios. A análise que paralisa.
 **Subtítulo:** Quanto mais Camadas, menos responsabilidade
 
 **Introdução:**
@@ -1185,6 +1186,3 @@ A cultura organizacional é o solo onde todas as outras sabotagens florescem. Qu
 **Tags:** #Cultura, #Centralização, #Delegação
 
 ---
-
-
-

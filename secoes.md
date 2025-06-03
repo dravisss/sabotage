@@ -41,5 +41,31 @@ Construa sua <strong>fortaleza de regulamentos</strong> e veja a agilidade morre
 
 ---
 
-(Conteúdo reduzido para exemplo. O arquivo completo incluirá todas as seções extraídas do manual-content.ts, cada uma separada por --- e formatada de forma semelhante.)
+## 4. Tecnologia
+
+**Subtítulo:** O paraíso dos bugs e bloqueios
+
+**Introdução:**
+Quando a tecnologia vira obstáculo e não solução, a sabotagem é silenciosa, mas devastadora. Sistemas obsoletos, ferramentas incompatíveis e processos digitais mal desenhados são armas poderosas para travar qualquer organização.
+
+---
+
+## 5. Gestão de Tempo
+
+**Subtítulo:** O tempo é sempre curto
+
+**Introdução:**
+A má gestão do tempo é um dos maiores sabotadores da produtividade. Da urgência artificial ao multitasking, as armadilhas são muitas e afetam toda a equipe.
+
+---
+
+## 6. Cultura
+
+**Subtítulo:** O ambiente que molda tudo
+
+**Introdução:**
+A cultura organizacional é o solo onde todas as outras sabotagens florescem. Quando valores, crenças e práticas coletivas reforçam comportamentos tóxicos ou inibem a colaboração, o ambiente inteiro se torna fértil para o fracasso.
+
+---
+
 

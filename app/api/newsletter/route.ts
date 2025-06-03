@@ -60,6 +60,22 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: errorMsg }, { status: 400 });
     }
 
+    // 3. Envia magic link do Supabase
+    try {
+      const magicLinkRes = await fetch(process.env.NEXT_PUBLIC_SITE_URL + '/api/supa-magic-link', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      });
+      const magicLinkData = await magicLinkRes.json();
+      if (!magicLinkRes.ok) {
+        // Não bloqueia o fluxo, apenas loga o erro
+        console.error('Erro ao enviar magic link:', magicLinkData.error);
+      }
+    } catch (e) {
+      // Não bloqueia o fluxo em caso de erro
+      console.error('Erro ao conectar com endpoint de magic link:', e);
+    }
     return NextResponse.json({ success: true });
   } catch {
     return NextResponse.json({ error: 'Erro ao conectar com ActiveCampaign' }, { status: 500 });

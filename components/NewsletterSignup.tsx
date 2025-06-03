@@ -100,8 +100,12 @@ export default function NewsletterSignup({ onSuccess }: NewsletterSignupProps) {
           {loading ? 'Enviando...' : 'Quero me inscrever'}
         </button>
       </form>
-      {success && <p className="text-green-600 mt-2">Inscrição realizada com sucesso! Confira seu e-mail para acessar os materiais.</p>}
-      {error && <p className="text-red-600 mt-2">{error}</p>}
+      {success && (
+        <p className="text-green-600 mt-2">Inscrição realizada com sucesso! <b>Confira seu e-mail e clique no link mágico para liberar o conteúdo.</b></p>
+      )}
+      {error && (
+        <p className="text-red-600 mt-2">{error}</p>
+      )}
       <p className="text-xs text-zinc-500 mt-4">Você pode sair do clube quando quiser. Respeitamos sua privacidade.</p>
     </div>
   );
