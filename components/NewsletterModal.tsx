@@ -1,42 +1,45 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import NewsletterSignup from './NewsletterSignup';
 
-export default function NewsletterModal() {
-  const [open, setOpen] = useState(false);
-  const [dismissed, setDismissed] = useState(false);
+interface NewsletterModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  onSuccess: () => void;
+}
 
-  useEffect(() => {
-    // Abre por intenção de saída
-    const handleMouseOut = (e: MouseEvent) => {
-      if (!dismissed && e.clientY < 10) {
-        setOpen(true);
-      }
-    };
-    document.addEventListener('mouseout', handleMouseOut);
-    // Abre por flag do localStorage
-    if (!dismissed && typeof window !== 'undefined') {
-      if (localStorage.getItem('showNewsletterModal') === 'true') {
-        setOpen(true);
-        localStorage.removeItem('showNewsletterModal');
-      }
+export default function NewsletterModal({ isOpen, onClose, onSuccess }: NewsletterModalProps) {
+  if (!isOpen) return null;
+
+  const handleSuccess = () => {
+    // Set the flag in localStorage to indicate content is unlocked
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('hasUnlockedPremiumContent', 'true');
     }
-    return () => document.removeEventListener('mouseout', handleMouseOut);
-  }, [dismissed]);
-
-  if (!open || dismissed) return null;
+    // Call the onSuccess prop to notify the parent component (e.g., to update state)
+    onSuccess();
+  };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
-      <div className="bg-white rounded-lg shadow-lg max-w-md w-full p-6 relative">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm p-4">
+      <div className="bg-white rounded-xl shadow-2xl max-w-md w-full p-6 sm:p-8 relative transform transition-all duration-300 ease-out scale-100 opacity-100">
         <button
-          onClick={() => { setOpen(false); setDismissed(true); }}
-          className="absolute top-2 right-2 text-zinc-500 hover:text-zinc-800 text-2xl font-bold"
+          onClick={onClose} // Use the onClose prop directly
+          className="absolute top-3 right-3 text-zinc-400 hover:text-zinc-600 transition-colors text-2xl sm:text-3xl font-light"
           aria-label="Fechar"
-        >×</button>
-        <h2 className="text-xl font-bold text-red-700 mb-2 font-title">Vai sair sem seu kit de sabotagem?</h2>
-<p className="mb-4 text-zinc-700">Temos mais de 200 artigos publicados, livros e metodologias para ajudar você a superar as disfunções corporativas.</p>
-        <NewsletterSignup />
+        >
+          &times;
+        </button>
+        <div className="text-center">
+          <h2 className="text-2xl sm:text-3xl font-bold text-red-700 mb-3 font-title">
+            Desbloqueie Mais Táticas!
+          </h2>
+          <p className="mb-6 text-zinc-600 text-sm sm:text-base">
+            Insira seu e-mail para liberar todas as táticas de sabotagem e receber conteúdos exclusivos sobre design organizacional e como transformar sua empresa.
+          </p>
+        </div>
+        {/* Pass the handleSuccess function to NewsletterSignup */}
+        <NewsletterSignup onSuccess={handleSuccess} />
       </div>
     </div>
   );

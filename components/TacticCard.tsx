@@ -4,10 +4,12 @@ import React, { useState, useRef } from 'react';
 import { Card, CardHeader, CardContent } from './ui/card';
 import { TacticCardData } from '@/lib/manual-content';
 import { toPng } from 'html-to-image';
-import { Copy, Image as ImageIcon } from 'lucide-react';
+import { Copy, Image as ImageIcon, Lock } from 'lucide-react';
 
 interface TacticCardProps {
   tactic: TacticCardData;
+  isLocked: boolean;
+  onRequestUnlock: () => void;
 }
 
 // TooltipButton: botão com tooltip simples ao passar o mouse
@@ -36,11 +38,37 @@ const TooltipButton: React.FC<{ onClick: (e: React.MouseEvent) => void; label: s
   );
 };
 
-export const TacticCard: React.FC<TacticCardProps> = ({ tactic }) => {
+export const TacticCard: React.FC<TacticCardProps> = ({ tactic, isLocked, onRequestUnlock }) => {
   const [expanded, setExpanded] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
 
-  const handleExpand = () => {
+  const handleCardClick = () => {
+    if (isLocked) {
+      onRequestUnlock();
+      return;
+    }
+    // Original handleExpand logic below
+    setExpanded((v) => !v);
+    if (!expanded) {
+      // Só conta se for a primeira vez que expande esse card
+      const clicked = JSON.parse(localStorage.getItem('tacticClicked') || '[]');
+      if (!clicked.includes(tactic.title)) {
+        const updated = [...clicked, tactic.title];
+        localStorage.setItem('tacticClicked', JSON.stringify(updated));
+        let clicks = Number(localStorage.getItem('tacticClicks') || 0);
+        clicks++;
+        localStorage.setItem('tacticClicks', clicks.toString());
+        if (clicks === 3) {
+          localStorage.setItem('showNewsletterModal', 'true');
+        }
+      }
+    }
+  };
+
+  // Keep original handleExpand if needed elsewhere, or rename handleCardClick to handleExpand
+  const handleExpand = handleCardClick; // Alias for simplicity if only one click action now
+
+  const originalHandleExpand = () => { // Renaming original for clarity if we need to differentiate
     setExpanded((v) => !v);
     if (!expanded) {
       // Só conta se for a primeira vez que expande esse card
@@ -183,11 +211,11 @@ Tags: ${tactic.tags?.join(', ')}
   return (
     <Card
       ref={cardRef}
-      className={`relative bg-white transition-all duration-300 cursor-pointer overflow-hidden ${expanded ? 'shadow-2xl scale-[1.03]' : 'hover:scale-[1.01]'} border border-zinc-200 mb-6`}
-      onClick={handleExpand}
+      className={`relative bg-white transition-all duration-300 overflow-hidden ${isLocked ? 'opacity-60 cursor-default' : (expanded ? 'shadow-2xl scale-[1.03]' : 'hover:scale-[1.01] cursor-pointer')} border border-zinc-200 mb-6`}
+      onClick={handleCardClick}
       aria-expanded={expanded}
     >
-      <CardHeader className="flex flex-row items-center gap-4 px-5 py-4">
+      <CardHeader className={`flex flex-row items-center gap-4 px-5 py-4 ${isLocked ? 'pointer-events-none' : ''}`}>
         {tactic.icon && (
           <span className="text-4xl mr-2 select-none" aria-label="ícone da tática">{tactic.icon}</span>
         )}
@@ -197,6 +225,13 @@ Tags: ${tactic.tags?.join(', ')}
             <span className={`px-2 py-1 rounded-full text-xs font-bold uppercase shadow ${tactic.level.includes('Drástica') ? 'bg-red-200 text-red-800' : 'bg-red-100 text-red-700'}`}>{tactic.level}</span>
           </div>
           <div className="text-zinc-500 italic text-base font-title break-words whitespace-normal">{tactic.subtitle}</div>
+          {isLocked && (
+            <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/10 backdrop-blur-sm z-10 rounded-2xl">
+              <Lock size={48} className="text-zinc-700 mb-2" />
+              <span className="text-zinc-700 font-semibold text-sm">Conteúdo Bloqueado</span>
+              <span className="text-zinc-600 text-xs">Inscreva-se para liberar</span>
+            </div>
+          )}
           <div className="flex items-center gap-2 mt-1">
             <span className="text-xs text-zinc-500 font-title">Dano à Produtividade:</span>
             {Array.from({ length: tactic.damageLevel || 1 }).map((_, i) => (

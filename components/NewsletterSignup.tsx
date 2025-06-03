@@ -1,7 +1,11 @@
 "use client";
 import React, { useState } from 'react';
 
-export default function NewsletterSignup() {
+interface NewsletterSignupProps {
+  onSuccess?: () => void;
+}
+
+export default function NewsletterSignup({ onSuccess }: NewsletterSignupProps) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [consent, setConsent] = useState(false);
@@ -26,6 +30,9 @@ export default function NewsletterSignup() {
       if (res.ok && data.success) {
         setSuccess(true);
         setEmail('');
+        if (onSuccess) {
+          onSuccess();
+        }
       } else {
         setError(data.error || 'Erro ao cadastrar. Tente novamente.');
       }
