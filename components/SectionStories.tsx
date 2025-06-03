@@ -35,6 +35,15 @@ const shortname = "sabotagem-corporativa";
         </p>
       </div>
       <div id="disqus_thread"></div>
+      {/* DEBUG: Mostra os valores das props do Disqus */}
+      <div className="bg-red-50 text-red-700 text-xs p-2 mb-2 rounded border border-red-200">
+        <strong>DEBUG Disqus:</strong><br />
+        <span>sectionUrl: <code>{sectionUrl}</code></span><br />
+        <span>sectionId: <code>{sectionId}</code></span><br />
+        <span>sectionTitle: <code>{sectionTitle}</code></span>
+      </div>
+      {typeof window !== 'undefined' && console.log('[SectionStories] DEBUG', { sectionUrl, sectionId, sectionTitle })}
+
       {/* Embed puro do Disqus */}
       <ScriptDisqus
         shortname={shortname}
