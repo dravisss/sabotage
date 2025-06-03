@@ -45,6 +45,18 @@
 }
 
 /* Simplified theme variables. Original oklch definitions removed to avoid parsing errors */
+
+/* Override global para evitar que Disqus leia cores em oklch */
+:root {
+  --tw-prose-links: #111111 !important;
+  --tw-prose-invert-links: #111111 !important;
+  --color-anchor: #111111 !important;
+  --color-link: #111111 !important;
+  --color-primary: #111111 !important;
+  --color-accent: #111111 !important;
+  /* Adicione outros nomes se encontrar no DevTools */
+}
+
 :root {
   --radius: 0.625rem;
   --background: #f5f5f0;
