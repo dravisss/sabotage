@@ -19,6 +19,16 @@ export default function ManualPageClient({ section: initialSection, slug: initia
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [unlocked, setUnlocked] = useState(false);
 
+  // Carrega o estado salvo no localStorage ao montar
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const unlockedFlag = localStorage.getItem('hasUnlockedPremiumContent');
+      if (unlockedFlag === 'true') {
+        setUnlocked(true);
+      }
+    }
+  }, []);
+
   useEffect(() => {
     let unsubscribe: (() => void) | undefined;
     import('@/lib/supabaseClient').then(({ supabase }) => {
@@ -123,6 +133,9 @@ export default function ManualPageClient({ section: initialSection, slug: initia
             onSuccess={() => {
               setShowNewsletterModal(false);
               setUnlocked(true);
+              if (typeof window !== 'undefined') {
+                localStorage.setItem('hasUnlockedPremiumContent', 'true');
+              }
             }}
           />
         )}
