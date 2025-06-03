@@ -57,6 +57,9 @@ export const TacticCard: React.FC<TacticCardProps> = ({ tactic, isLocked, onRequ
 
 
 
+  const [copiedText, setCopiedText] = useState(false);
+  const [copiedImage, setCopiedImage] = useState(false);
+
   const handleCopyText = async (e: React.MouseEvent) => {
     e.stopPropagation();
     const text = `
@@ -76,6 +79,8 @@ Tags: ${tactic.tags?.join(', ')}
 `;
     const attributionText = "\n\n---\nCopiado de sabotagemcorporativa.org\nFeito com 💙 pela Target Teal";
     await navigator.clipboard.writeText(text + attributionText);
+    setCopiedText(true);
+    setTimeout(() => setCopiedText(false), 1500);
   };
 
   const handleCopyImage = async (e: React.MouseEvent) => {
@@ -131,7 +136,9 @@ Tags: ${tactic.tags?.join(', ')}
       const blob = await response.blob();
       const item = new ClipboardItem({ 'image/png': blob });
       await navigator.clipboard.write([item]);
-    } catch (err) {
+    setCopiedImage(true);
+    setTimeout(() => setCopiedImage(false), 1500);
+  } catch (err) {
       console.error('Failed to copy image', err);
     }
   };
@@ -259,11 +266,19 @@ Tags: ${tactic.tags?.join(', ')}
           </CardContent>
 <div className="absolute bottom-2 right-[12px] flex gap-2" onClick={(e: React.MouseEvent) => e.stopPropagation()}>
             {/* Ajuste visual: gap maior da borda direita */}
-            <TooltipButton onClick={handleCopyText} label="Copiar texto">
-              <Copy size={16} />
+            <TooltipButton onClick={handleCopyText} label={copiedText ? "Copiado!" : "Copiar texto"}>
+              {copiedText ? (
+                <span className="text-green-600 flex items-center gap-1"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              ) : (
+                <Copy size={16} />
+              )}
             </TooltipButton>
-            <TooltipButton onClick={handleCopyImage} label="Copiar imagem">
-              <ImageIcon size={16} />
+            <TooltipButton onClick={handleCopyImage} label={copiedImage ? "Copiado!" : "Copiar imagem"}>
+              {copiedImage ? (
+                <span className="text-green-600 flex items-center gap-1"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              ) : (
+                <ImageIcon size={16} />
+              )}
             </TooltipButton>
 <TooltipButton onClick={handleDownloadImage} label="Baixar imagem">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
