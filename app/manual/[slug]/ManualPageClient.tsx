@@ -25,7 +25,7 @@ export default function ManualPageClient({ section: initialSection, slug: initia
         setIsAuthenticated(!!session);
         setShowNewsletterModal(!session);
       });
-      const { data: listener } = supabase.auth.onAuthStateChange((_event: string, session: any) => {
+      const { data: listener } = supabase.auth.onAuthStateChange((_event: string, session: import('@supabase/supabase-js').Session | null) => {
         setIsAuthenticated(!!session);
         setShowNewsletterModal(!session);
       });
@@ -120,11 +120,7 @@ export default function ManualPageClient({ section: initialSection, slug: initia
             isOpen={showNewsletterModal}
             onClose={() => setShowNewsletterModal(false)}
             onSuccess={() => {
-              setHasUnlockedContent(true);
               setShowNewsletterModal(false);
-              if (typeof window !== 'undefined') {
-                localStorage.setItem('hasUnlockedPremiumContent', 'true');
-              }
             }}
           />
         )}

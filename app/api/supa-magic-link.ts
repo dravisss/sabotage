@@ -27,7 +27,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: data.error_description || JSON.stringify(data) }, { status: 400 });
     }
     return NextResponse.json({ success: true, action_link: data.action_link });
-  } catch (e) {
+  } catch {
     return NextResponse.json({ error: 'Erro ao conectar com Supabase MCP' }, { status: 500 });
   }
 }
