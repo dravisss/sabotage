@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface NewsletterSignupProps {
   onSuccess?: () => void;
@@ -8,8 +8,9 @@ interface NewsletterSignupProps {
 export default function NewsletterSignup({ onSuccess }: NewsletterSignupProps) {
   const [alreadyUnlocked, setAlreadyUnlocked] = React.useState(false);
   const [mounted, setMounted] = React.useState(false);
+  const [forceRender, setForceRender] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setMounted(true);
     if (typeof window !== 'undefined') {
       const unlocked = localStorage.getItem('hasUnlockedPremiumContent');
@@ -18,7 +19,6 @@ export default function NewsletterSignup({ onSuccess }: NewsletterSignupProps) {
       }
     }
   }, []);
-
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -42,6 +42,9 @@ export default function NewsletterSignup({ onSuccess }: NewsletterSignupProps) {
       });
       const data = await res.json();
       if (res.ok && data.success) {
+        localStorage.setItem('hasUnlockedPremiumContent', 'true');
+        setAlreadyUnlocked(true);
+        setForceRender(!forceRender);
         setSuccess(true);
         setEmail('');
         if (onSuccess) {
@@ -64,7 +67,19 @@ export default function NewsletterSignup({ onSuccess }: NewsletterSignupProps) {
     }
   };
 
-  if (!mounted || alreadyUnlocked) return null;
+  if (success) {
+    return (
+      <div className="bg-gray-800 p-8 rounded-lg shadow-lg text-center">
+        <h2 className="text-2xl font-bold text-white mb-4">Inscrição realizada com sucesso!</h2>
+        <p className="text-gray-300">Você já pode acessar todo o conteúdo do manual.</p>
+      </div>
+    );
+  }
+
+  if (mounted && alreadyUnlocked) {
+    return null;
+  }
+
   return (
     <div className="mt-12 p-6 bg-zinc-50 border border-zinc-200 rounded-lg shadow max-w-xl mx-auto">
       <h2 className="font-title text-2xl font-bold mb-2 text-red-700">Clube dos Agentes de Mudança</h2>
