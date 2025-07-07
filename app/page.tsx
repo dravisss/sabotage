@@ -6,6 +6,7 @@ import { TypewriterText } from '@/components/TypewriterText';
 import HomeIntro from '@/components/HomeIntro';
 import ManualSectionsGallery from '@/components/ManualSectionsGallery';
 import NewsletterSignup from '@/components/NewsletterSignup';
+import MatrioskaGameCard from '@/components/MatrioskaGameCard';
 
 export default function HomePage() {
   const [showMain, setShowMain] = useState(false);
@@ -29,6 +30,7 @@ export default function HomePage() {
         />
         <HomeIntro />
         <ManualSectionsGallery />
+        <MatrioskaGameCard />
         <NewsletterSignup />
         <div className="mt-12">
           <div className="mt-10 bg-zinc-50 border border-zinc-300 text-zinc-600 shadow rounded-lg p-6 w-full">

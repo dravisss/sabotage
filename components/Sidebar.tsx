@@ -44,20 +44,52 @@ export default function AppSidebar() {
           )}
           <SidebarGroupContent>
             <SidebarMenu>
-              {manualSections.map((section) => (
-                <SidebarMenuItem key={section.slug}>
-                  <SidebarMenuButton asChild className={`w-full ${collapsed ? "justify-center items-center px-0 h-12" : ""} ${pathname === `/manual/${section.slug}` ? "bg-zinc-200 text-zinc-900 font-bold" : "text-zinc-700 hover:bg-zinc-100"}`} style={{ minHeight: 44, overflow: 'visible' }}>
-                    <Link href={`/manual/${section.slug}`} tabIndex={0} className={`flex items-center w-full ${collapsed ? "justify-center" : "gap-3"}`} style={{ overflow: 'visible' }}>
-                      <span className="text-2xl select-none" aria-label="emoji da seção" style={{ overflow: 'visible' }}>
-                        {sectionEmojis[section.slug] || "📖"}
-                      </span>
-                      {!collapsed && (
-                        <span className="truncate" style={{ whiteSpace: "nowrap" }}>{section.navTitle.replace(/^\d+\.\s*/, "")}</span>
-                      )}
-                    </Link>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
+              {/* Renderiza até o quiz */}
+{manualSections.map((section, idx) => {
+  if (section.slug === "encerramento") return null;
+  return (
+    <SidebarMenuItem key={section.slug}>
+      <SidebarMenuButton asChild className={`w-full ${collapsed ? "justify-center items-center px-0 h-12" : ""} ${pathname === `/manual/${section.slug}` ? "bg-zinc-200 text-zinc-900 font-bold" : "text-zinc-700 hover:bg-zinc-100"}`} style={{ minHeight: 44, overflow: 'visible' }}>
+        <Link href={`/manual/${section.slug}`} tabIndex={0} className={`flex items-center w-full ${collapsed ? "justify-center" : "gap-3"}`} style={{ overflow: 'visible' }}>
+          <span className="text-2xl select-none" aria-label="emoji da seção" style={{ overflow: 'visible' }}>
+            {sectionEmojis[section.slug] || "📖"}
+          </span>
+          {!collapsed && (
+            <span className="truncate" style={{ whiteSpace: "nowrap" }}>{section.navTitle.replace(/^\d+\.\s*/, "")}</span>
+          )}
+        </Link>
+      </SidebarMenuButton>
+    </SidebarMenuItem>
+  );
+})}
+{/* Insere o link do Matrioska após o quiz */}
+<SidebarMenuItem>
+  <SidebarMenuButton asChild className={`w-full ${collapsed ? "justify-center items-center px-0 h-12" : ""} ${pathname === "/matrioska" ? "bg-zinc-200 text-zinc-900 font-bold" : "text-zinc-700 hover:bg-zinc-100"}`} style={{ minHeight: 44, overflow: 'visible' }}>
+    <Link href="/matrioska" tabIndex={0} className={`flex items-center w-full ${collapsed ? "justify-center" : "gap-3"}`} style={{ overflow: 'visible' }}>
+      <span className="text-2xl select-none" aria-label="Jogo Matrioska" style={{ overflow: 'visible' }}>
+        🎲
+      </span>
+      {!collapsed && (
+        <span className="truncate" style={{ whiteSpace: "nowrap" }}>Jogo Matrioska</span>
+      )}
+    </Link>
+  </SidebarMenuButton>
+</SidebarMenuItem>
+{/* Renderiza o encerramento */}
+{manualSections.find(s => s.slug === "encerramento") && (
+  <SidebarMenuItem key="encerramento">
+    <SidebarMenuButton asChild className={`w-full ${collapsed ? "justify-center items-center px-0 h-12" : ""} ${pathname === "/manual/encerramento" ? "bg-zinc-200 text-zinc-900 font-bold" : "text-zinc-700 hover:bg-zinc-100"}`} style={{ minHeight: 44, overflow: 'visible' }}>
+      <Link href="/manual/encerramento" tabIndex={0} className={`flex items-center w-full ${collapsed ? "justify-center" : "gap-3"}`} style={{ overflow: 'visible' }}>
+        <span className="text-2xl select-none" aria-label="emoji da seção" style={{ overflow: 'visible' }}>
+          {sectionEmojis["encerramento"] || "📖"}
+        </span>
+        {!collapsed && (
+          <span className="truncate" style={{ whiteSpace: "nowrap" }}>Encerramento</span>
+        )}
+      </Link>
+    </SidebarMenuButton>
+  </SidebarMenuItem>
+)}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
