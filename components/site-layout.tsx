@@ -35,29 +35,22 @@ function SiteLayoutWithSidebarContext({ children }: { children: React.ReactNode 
             <div className="w-full max-w-[800px] mx-auto py-8 px-4 sm:px-6 lg:px-8 flex-grow">
               {children}
             </div>
+            <footer className="py-8 border-t border-zinc-300 bg-beige-100 w-full">
+              <div className="flex flex-col items-center justify-center gap-2 px-4 w-full max-w-[800px] mx-auto">
+                <p className="text-center text-xs text-zinc-600 mb-2">Feito com <span role="img" aria-label="coração azul">💙</span> por <a href="https://targetteal.com" target="_blank" rel="noopener noreferrer" className="font-medium underline underline-offset-4 hover:text-blue-700">Target Teal</a></p>
+                <a href="https://targetteal.com" target="_blank" rel="noopener noreferrer" aria-label="Target Teal" className="block">
+                  <img
+                    src="/logo-targetteal.png"
+                    alt="Target Teal logo"
+                    style={{ maxWidth: 180, height: 'auto' }}
+                    className="mx-auto"
+                  />
+                </a>
+              </div>
+            </footer>
           </SidebarInset>
         </div>
       )}
-      <footer
-        className="py-8 border-t border-zinc-300 bg-beige-100 w-full"
-      >
-        <div
-          className="flex flex-col items-center justify-center gap-2 px-4 w-full max-w-[800px] mx-auto transition-all"
-          style={{
-            paddingLeft: typeof window !== 'undefined' && window.innerWidth >= 768 && !isHome && !isCollapsed ? 280 : undefined,
-          }}
-        >
-          <p className="text-center text-xs text-zinc-600 mb-2">Feito com <span role="img" aria-label="coração azul">💙</span> por <a href="https://targetteal.com" target="_blank" rel="noopener noreferrer" className="font-medium underline underline-offset-4 hover:text-blue-700">Target Teal</a></p>
-          <a href="https://targetteal.com" target="_blank" rel="noopener noreferrer" aria-label="Target Teal" className="block">
-            <img
-              src="/logo-targetteal.png"
-              alt="Target Teal logo"
-              style={{ maxWidth: 180, height: 'auto' }}
-              className="mx-auto"
-            />
-          </a>
-        </div>
-      </footer>
     </div>
   );
 }
