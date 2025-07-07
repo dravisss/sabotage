@@ -45,7 +45,7 @@ export default function AppSidebar() {
           <SidebarGroupContent>
             <SidebarMenu>
               {/* Renderiza até o quiz */}
-{manualSections.map((section, idx) => {
+{manualSections.map((section) => {
   if (section.slug === "encerramento") return null;
   return (
     <SidebarMenuItem key={section.slug}>
