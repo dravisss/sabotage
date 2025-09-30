@@ -3,7 +3,7 @@
 import { usePathname } from 'next/navigation';
 import Sidebar from '@/components/Sidebar';
 import Header from '@/components/Header';
-import { SidebarProvider, SidebarInset, useSidebar } from '@/components/ui/sidebar';
+import { SidebarProvider, SidebarInset } from '@/components/ui/sidebar';
 
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -15,8 +15,6 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
 
 function SiteLayoutWithSidebarContext({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const { state } = useSidebar();
-  const isCollapsed = state === "collapsed";
   const isHome = pathname === '/';
 
   return (
