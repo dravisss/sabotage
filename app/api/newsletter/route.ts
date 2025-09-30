@@ -23,10 +23,16 @@ export async function POST(req: NextRequest) {
 
   try {
     // 1. Cria ou atualiza o contato
+    // Separar nome completo em firstName e lastName
+    const nameParts = name ? name.trim().split(/\s+/) : [];
+    const firstName = nameParts[0] || undefined;
+    const lastName = nameParts.length > 1 ? nameParts.slice(1).join(' ') : undefined;
+    
     const acPayload = {
       contact: {
         email,
-        firstName: name || undefined
+        firstName,
+        lastName
       }
     };
     console.log('NEWSLETTER: Payload enviado para AC:', acPayload);
@@ -91,6 +97,94 @@ export async function POST(req: NextRequest) {
       const errorMsg = listData?.errors?.[0]?.title || JSON.stringify(listData);
       console.error('NEWSLETTER: Erro AC List:', errorMsg, listData);
       return NextResponse.json({ error: errorMsg }, { status: 400 });
+    }
+
+    // 3. Associa o contato à lista 6 (Conteúdos da Target Teal)
+    const list6Payload = {
+      contactList: {
+        list: '6',
+        contact: String(contactId),
+        status: 1
+      }
+    };
+    console.log('NEWSLETTER: Payload enviado para AC List 6:', list6Payload);
+    const list6Res = await fetch('https://targetteal.api-us1.com/api/3/contactLists', {
+      method: 'POST',
+      headers: {
+        'Api-Token': API_KEY!,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(list6Payload),
+    });
+    const list6Data = await list6Res.json();
+    console.log('NEWSLETTER: Resposta AC List 6:', { status: list6Res.status, ok: list6Res.ok, list6Data });
+    // Não bloquear se já estiver na lista
+    if (!list6Res.ok && !list6Data?.errors?.[0]?.title?.includes('duplicate')) {
+      const errorMsg = list6Data?.errors?.[0]?.title || JSON.stringify(list6Data);
+      console.error('NEWSLETTER: Erro AC List 6:', errorMsg, list6Data);
+    }
+
+    // 4. Adiciona a tag "Clube"
+    // Primeiro, buscar ou criar a tag
+    const tagsRes = await fetch('https://targetteal.api-us1.com/api/3/tags?search=Clube', {
+      method: 'GET',
+      headers: {
+        'Api-Token': API_KEY!,
+        'Content-Type': 'application/json',
+      },
+    });
+    const tagsData = await tagsRes.json();
+    console.log('NEWSLETTER: Resposta AC Tags:', { status: tagsRes.status, ok: tagsRes.ok, tagsData });
+    
+    let tagId = tagsData?.tags?.find((t: { tag: string }) => t.tag.toLowerCase() === 'clube')?.id;
+    console.log('NEWSLETTER: tagId encontrado:', tagId);
+    
+    // Se a tag não existir, criar
+    if (!tagId) {
+      console.log('NEWSLETTER: Tag "Clube" não encontrada, criando...');
+      const createTagRes = await fetch('https://targetteal.api-us1.com/api/3/tags', {
+        method: 'POST',
+        headers: {
+          'Api-Token': API_KEY!,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          tag: {
+            tag: 'Clube',
+            tagType: 'contact',
+            description: 'Membros do Clube dos Agentes de Mudança'
+          }
+        }),
+      });
+      const createTagData = await createTagRes.json();
+      console.log('NEWSLETTER: Resposta AC Create Tag:', { status: createTagRes.status, ok: createTagRes.ok, createTagData });
+      tagId = createTagData?.tag?.id;
+    }
+
+    // Associar a tag ao contato
+    if (tagId) {
+      const contactTagPayload = {
+        contactTag: {
+          contact: String(contactId),
+          tag: String(tagId)
+        }
+      };
+      console.log('NEWSLETTER: Payload enviado para AC ContactTag:', contactTagPayload);
+      const contactTagRes = await fetch('https://targetteal.api-us1.com/api/3/contactTags', {
+        method: 'POST',
+        headers: {
+          'Api-Token': API_KEY!,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(contactTagPayload),
+      });
+      const contactTagData = await contactTagRes.json();
+      console.log('NEWSLETTER: Resposta AC ContactTag:', { status: contactTagRes.status, ok: contactTagRes.ok, contactTagData });
+      // Não bloquear se a tag já estiver associada
+      if (!contactTagRes.ok && !contactTagData?.errors?.[0]?.title?.includes('duplicate')) {
+        const errorMsg = contactTagData?.errors?.[0]?.title || JSON.stringify(contactTagData);
+        console.error('NEWSLETTER: Erro AC ContactTag:', errorMsg, contactTagData);
+      }
     }
 
     console.log('NEWSLETTER: Finalizando fluxo com sucesso.');
