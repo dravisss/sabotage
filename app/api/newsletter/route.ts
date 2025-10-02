@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
 
   const API_URL = 'https://targetteal.api-us1.com/api/3/contacts';
   const API_KEY = process.env.ACTIVECAMPAIGN_API_KEY;
-  const LIST_ID = 11;
+  const LIST_ID = 6;
 
   console.log('DEBUG NEWSLETTER:', { API_URL, API_KEY: !!API_KEY, LIST_ID, ENV: process.env.NODE_ENV });
 
