@@ -62,19 +62,6 @@ export default function AppSidebar() {
     </SidebarMenuItem>
   );
 })}
-{/* Insere o link do Matrioska após o quiz */}
-<SidebarMenuItem>
-  <SidebarMenuButton asChild className={`w-full ${collapsed ? "justify-center items-center px-0 h-12" : ""} ${pathname === "/matrioska" ? "bg-zinc-200 text-zinc-900 font-bold" : "text-zinc-700 hover:bg-zinc-100"}`} style={{ minHeight: 44, overflow: 'visible' }}>
-    <Link href="/matrioska" tabIndex={0} className={`flex items-center w-full ${collapsed ? "justify-center" : "gap-3"}`} style={{ overflow: 'visible' }}>
-      <span className="text-2xl select-none" aria-label="Jogo Matrioska" style={{ overflow: 'visible' }}>
-        🎲
-      </span>
-      {!collapsed && (
-        <span className="truncate" style={{ whiteSpace: "nowrap" }}>Jogo Matrioska</span>
-      )}
-    </Link>
-  </SidebarMenuButton>
-</SidebarMenuItem>
 {/* Renderiza o encerramento */}
 {manualSections.find(s => s.slug === "encerramento") && (
   <SidebarMenuItem key="encerramento">
